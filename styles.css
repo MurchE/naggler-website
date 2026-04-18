@@ -211,20 +211,21 @@ a:hover { color: var(--blue-deep); }
   letter-spacing: 0.02em;
 }
 
-/* ─── Hero ─────────────────────────────────────────────────── */
+/* ─── Hero ─────────────────────────────────────────────────────
+   Intentional composition: natural content height (no 100vh tricks
+   that stretch on short viewports), Naggy capped to a confident
+   mid-size, tight typography, generous-but-bounded negative space.
+   ────────────────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  padding: 2.25rem 0 3rem;
+  padding: 2.5rem 0 3.5rem;
   overflow: hidden;
-  min-height: calc(100vh - 68px);  /* ensure Naggy lands in the fold */
-  display: flex;
-  align-items: center;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: 3rem;
   align-items: center;
   width: 100%;
 }
@@ -233,13 +234,14 @@ a:hover { color: var(--blue-deep); }
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  padding: 0.35rem 0.75rem;
+  margin-bottom: 1.25rem;
+  padding: 0.3rem 0.7rem;
   background: var(--cream-bg);
   border: 1px solid #f3dec1;
   border-radius: 999px;
-  font-size: var(--step--1);
+  font-size: 0.78rem;
   color: #9c5a1d;
+  letter-spacing: 0.01em;
 }
 .hero-kicker::before {
   content: "";
@@ -254,10 +256,12 @@ a:hover { color: var(--blue-deep); }
 }
 
 .hero-title {
-  margin: 0 0 1.25rem;
-  font-size: var(--step-5);  /* slightly smaller so the sentence doesn't wrap to 5 lines */
+  margin: 0 0 1rem;
+  font-size: clamp(2.25rem, 1.5rem + 2.5vw, 3.5rem);  /* bounded — never runaway */
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
   max-width: 14ch;
+  line-height: 1;
+  letter-spacing: -0.025em;
 }
 
 .hero-title em {
@@ -267,11 +271,11 @@ a:hover { color: var(--blue-deep); }
 }
 
 .hero-sub {
-  font-size: var(--step-2);
-  line-height: 1.4;
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  line-height: 1.5;
   color: var(--slate-500);
-  max-width: 38ch;
-  margin-bottom: 2rem;
+  max-width: 42ch;
+  margin-bottom: 1.5rem;
 }
 
 .hero-cta {
@@ -292,54 +296,60 @@ a:hover { color: var(--blue-deep); }
 .hero-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
 .hero-meta svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-/* Hero art: Naggy peeks from right, with a handcrafted backdrop */
+/* Hero art: Naggy sits confidently in a bounded square — not aspect-ratio
+   stretched. Size-caps on the image itself, backdrop sized relative to it,
+   cards positioned to FRAME (not cover) his face. */
 .hero-art {
   position: relative;
-  aspect-ratio: 1 / 1.1;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1 / 1;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  margin-inline: auto;
 }
 
 .hero-art-backdrop {
   position: absolute;
-  inset: 8% 5% 10% 5%;
+  inset: 5% 0% 5% 0%;
   background:
-    radial-gradient(ellipse at 50% 40%, var(--blue-90) 0%, transparent 65%),
-    radial-gradient(ellipse at 70% 80%, var(--cream-bg) 0%, transparent 55%);
-  border-radius: 50% 50% 40% 40% / 45% 45% 55% 55%;
-  filter: blur(8px);
+    radial-gradient(ellipse at 50% 45%, var(--blue-90) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 85%, var(--cream-bg) 0%, transparent 55%);
+  border-radius: 50% 50% 42% 42% / 45% 45% 55% 55%;
+  filter: blur(10px);
+  opacity: 0.85;
 }
 
 .hero-art-card {
   position: absolute;
   background: white;
-  border-radius: var(--radius-md);
-  padding: 0.75rem 1rem;
-  box-shadow: var(--shadow-md);
-  font-size: 0.85rem;
+  border-radius: 12px;
+  padding: 0.55rem 0.8rem;
+  box-shadow: 0 8px 20px -8px rgba(30, 41, 59, 0.18), 0 2px 4px rgba(30, 41, 59, 0.05);
+  font-size: 0.78rem;
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.5rem;
   z-index: 3;
   animation: float 6s ease-in-out infinite;
+  white-space: nowrap;
 }
-/* Positioned to frame Naggy without covering his face. */
+/* Cards hover near Naggy's shoulders — enough to frame him, none over his face. */
 .hero-art-card.card-1 {
-  top: 8%;
-  left: -6%;
+  top: 12%;
+  left: -8%;
   animation-delay: 0s;
 }
 .hero-art-card.card-2 {
   bottom: 14%;
-  right: 2%;
+  right: -6%;
   animation-delay: 2s;
   background: var(--sage-bg);
   color: #166534;
-  white-space: nowrap;
 }
 .hero-art-card .dot {
-  width: 8px; height: 8px; border-radius: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
   background: var(--blue);
   flex-shrink: 0;
 }
@@ -352,9 +362,10 @@ a:hover { color: var(--blue-deep); }
 .naggy-hero {
   position: relative;
   z-index: 2;
-  max-width: 100%;
+  width: 88%;
+  max-width: 340px;
   height: auto;
-  filter: drop-shadow(0 20px 32px rgba(30, 41, 59, 0.18));
+  filter: drop-shadow(0 18px 28px rgba(30, 41, 59, 0.2));
   animation: enter-bounce 1.4s cubic-bezier(.2, .9, .3, 1.4) both;
 }
 @keyframes enter-bounce {
