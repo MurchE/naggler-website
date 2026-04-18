@@ -214,15 +214,19 @@ a:hover { color: var(--blue-deep); }
 /* ─── Hero ─────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  padding: 4rem 0 5rem;
+  padding: 2.25rem 0 3rem;
   overflow: hidden;
+  min-height: calc(100vh - 68px);  /* ensure Naggy lands in the fold */
+  display: flex;
+  align-items: center;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2.5rem;
   align-items: center;
+  width: 100%;
 }
 
 .hero-kicker {
@@ -251,8 +255,9 @@ a:hover { color: var(--blue-deep); }
 
 .hero-title {
   margin: 0 0 1.25rem;
-  font-size: var(--step-6);
+  font-size: var(--step-5);  /* slightly smaller so the sentence doesn't wrap to 5 lines */
   font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 0;
+  max-width: 14ch;
 }
 
 .hero-title em {
@@ -319,24 +324,19 @@ a:hover { color: var(--blue-deep); }
   z-index: 3;
   animation: float 6s ease-in-out infinite;
 }
+/* Positioned to frame Naggy without covering his face. */
 .hero-art-card.card-1 {
-  top: 18%;
-  left: -4%;
+  top: 8%;
+  left: -6%;
   animation-delay: 0s;
 }
 .hero-art-card.card-2 {
-  bottom: 24%;
-  right: -6%;
+  bottom: 14%;
+  right: 2%;
   animation-delay: 2s;
   background: var(--sage-bg);
   color: #166534;
-}
-.hero-art-card.card-3 {
-  top: 46%;
-  right: 8%;
-  animation-delay: 4s;
-  background: var(--coral-bg);
-  color: #7c2d12;
+  white-space: nowrap;
 }
 .hero-art-card .dot {
   width: 8px; height: 8px; border-radius: 50%;
@@ -344,7 +344,6 @@ a:hover { color: var(--blue-deep); }
   flex-shrink: 0;
 }
 .hero-art-card.card-2 .dot { background: var(--sage); }
-.hero-art-card.card-3 .dot { background: var(--coral); }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
@@ -403,6 +402,36 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
+}
+.team-grid-two {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 60rem;
+  margin-inline: auto;
+}
+
+.teammate-cta {
+  background: linear-gradient(180deg, #fdf5ea 0%, white 35%);
+}
+
+.teammate-cta-block {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--slate-200);
+}
+.btn-block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  font-size: var(--step-0);
+}
+.teammate-cta-note {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: var(--step--1);
+  color: var(--slate-500);
+  text-align: center;
+  font-style: italic;
 }
 
 .teammate {
@@ -549,32 +578,49 @@ section {
 
 .step {
   position: relative;
-  padding: 2rem 1.5rem;
+  padding: 1.75rem 0 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .step-number {
-  position: absolute;
-  top: 0; right: 1rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 8rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--slate-500);
+  background: var(--slate-100);
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
   line-height: 1;
-  color: var(--slate-100);
-  z-index: 0;
-  pointer-events: none;
-  letter-spacing: -0.05em;
 }
 
 .step-content {
-  position: relative;
-  z-index: 1;
+  flex: 1;
+  min-width: 0;
 }
 
-.step img {
-  width: 80px;
+.step-icon-wrap {
+  width: 96px;
+  height: 96px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 -4px 0 rgba(30, 41, 59, 0.06);
+}
+.step-icon-blue { background: var(--blue-90); }
+.step-icon-coral { background: var(--coral-bg); }
+.step-icon-sage { background: var(--sage-bg); }
+
+.step-icon-wrap img {
+  width: 72px;
   height: auto;
-  margin-bottom: 1.25rem;
-  filter: drop-shadow(0 8px 16px rgba(30, 41, 59, 0.15));
+  filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.18));
 }
 
 .step h3 {
@@ -587,6 +633,169 @@ section {
   color: var(--slate-500);
   font-size: var(--step-0);
   margin: 0;
+  max-width: 36ch;
+}
+
+/* ─── Talk to Naggy (AI-native) ────────────────────────────── */
+.talk {
+  background: var(--quill);
+  position: relative;
+}
+.talk::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 40%, var(--blue-90) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 70%, var(--pink-bg) 0%, transparent 40%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.talk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.talk-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.talk-list li {
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--blue);
+}
+.talk-list li:nth-child(2) { border-left-color: var(--coral); }
+.talk-list li:nth-child(3) { border-left-color: var(--sage); }
+.talk-list li strong {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: var(--step-2);
+  line-height: 1.3;
+  color: var(--slate);
+  margin-bottom: 0.3rem;
+  font-variation-settings: "opsz" 36, "SOFT" 100, "WONK" 1;
+}
+.talk-list li span {
+  color: var(--slate-500);
+  font-size: var(--step-0);
+  line-height: 1.5;
+}
+
+.talk-chat {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 48px -12px rgba(30, 41, 59, 0.15), 0 4px 12px rgba(30, 41, 59, 0.06);
+  overflow: hidden;
+  border: 1px solid var(--slate-200);
+}
+.talk-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--quill-dark);
+  border-bottom: 1px solid var(--slate-200);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--slate-500);
+}
+.talk-chat-dots {
+  display: inline-flex;
+  gap: 0.3rem;
+}
+.talk-chat-dots i {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #e2e8f0;
+}
+.talk-chat-dots i:nth-child(1) { background: #fbbf24; }
+.talk-chat-dots i:nth-child(2) { background: #facc15; }
+.talk-chat-dots i:nth-child(3) { background: #f59e0b; }
+
+.talk-chat-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background:
+    linear-gradient(180deg, #fdfcfa 0%, white 100%);
+}
+.chat-msg {
+  max-width: 85%;
+  padding: 0.8rem 1.05rem;
+  border-radius: 18px;
+  font-size: var(--step-0);
+  line-height: 1.45;
+  animation: gentle-enter 600ms cubic-bezier(.2, .9, .3, 1) both;
+}
+.chat-msg.user {
+  align-self: flex-end;
+  background: var(--blue);
+  color: white;
+  border-bottom-right-radius: 6px;
+}
+.chat-msg.naggy {
+  align-self: flex-start;
+  background: var(--quill-dark);
+  color: var(--slate);
+  border-bottom-left-radius: 6px;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.chat-msg.naggy img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+.chat-msg.naggy > div { flex: 1; }
+.chat-msg.naggy em {
+  color: var(--coral);
+  font-style: italic;
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 14, "SOFT" 100, "WONK" 1;
+}
+.chat-msg:nth-child(1) { animation-delay: 100ms; }
+.chat-msg:nth-child(2) { animation-delay: 600ms; }
+.chat-msg:nth-child(3) { animation-delay: 1100ms; }
+.chat-msg:nth-child(4) { animation-delay: 1600ms; }
+
+.talk-providers {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.talk-provider {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+.talk-provider strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  margin-bottom: 0.35rem;
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+}
+.talk-provider span {
+  color: var(--slate-500);
+  font-size: var(--step--1);
+  line-height: 1.5;
 }
 
 /* ─── Download ─────────────────────────────────────────────── */
@@ -764,9 +973,11 @@ section {
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 1rem; }
   .hero-art { aspect-ratio: 1 / 0.9; max-width: 440px; margin: 0 auto; }
-  .team-grid { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding: 2rem 0 2.5rem; }
+  .team-grid, .team-grid-two { grid-template-columns: 1fr; }
   .how-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .hero { padding: 2.5rem 0 3rem; }
+  .talk-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .talk-providers { grid-template-columns: 1fr; }
   .download { padding: 3rem 1.5rem; margin: 2rem auto 3rem; }
   section { padding: 3rem 0; }
   .you-mark::after { right: -60px; font-size: 0.75rem; }
