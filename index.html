@@ -43,16 +43,25 @@
     </div>
   </nav>
 
-  <!-- ══════════ HERO ══════════ -->
+  <!-- ══════════ HERO ══════════
+       Stripped composition: Naggy left, title right. No pill, no fake
+       notification cards, no blobby gradient. Just two elements
+       deliberately placed and aligned with the sections below. -->
   <header class="hero">
     <div class="tight hero-grid">
+      <figure class="hero-art">
+        <img class="naggy-hero" src="assets/naggy-hero.png" alt="Naggy the hedgehog, your attention companion" />
+        <figcaption class="hero-caption">
+          <span class="pulse"></span> Quiet pings every 5–15 min
+        </figcaption>
+      </figure>
+
       <div class="hero-copy">
-        <div class="hero-kicker">Desktop companion · Win · Mac · Linux</div>
         <h1 class="hero-title">
           Stay on the things you <em>said</em> mattered.
         </h1>
         <p class="hero-sub">
-          Naggy drops by every few minutes to gently point you back at them. One click to answer. He's on your side.
+          Naggy drops by every few minutes to gently point you back. One click. Under two seconds. He's on your side.
         </p>
         <div class="hero-cta">
           <a href="#download" class="btn btn-blue">
@@ -61,17 +70,6 @@
           </a>
           <a href="#team" class="btn btn-ghost">Meet Naggy →</a>
         </div>
-      </div>
-
-      <div class="hero-art">
-        <div class="hero-art-backdrop"></div>
-        <div class="hero-art-card card-1">
-          <span class="dot"></span><span><strong>INFRA</strong> · back at it</span>
-        </div>
-        <div class="hero-art-card card-2">
-          <span class="dot"></span><span>Gentle nudge, 5 min</span>
-        </div>
-        <img class="naggy-hero" src="assets/naggy-hero.png" alt="Naggy the hedgehog, your attention companion" />
       </div>
     </div>
   </header>
@@ -276,11 +274,11 @@
 
   <!-- ══════════ CLOSING ══════════ -->
   <section class="closing">
-    <div class="container tight">
+    <div class="container">
       <blockquote>
         Less net.<br><em>More nudge.</em>
       </blockquote>
-      <cite>The whole pitch, in four words.</cite>
+      <cite>The whole pitch · four words</cite>
     </div>
   </section>
 
