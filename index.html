@@ -229,9 +229,11 @@
     <div class="download">
       <div class="download-inner">
         <h2>Start today. No sign-up.</h2>
-        <p>Free to use. No account to create. Naggler lives on your desktop and keeps its ledger locally. Pick your platform — you're running in under a minute.</p>
+        <p class="download-lede download-lede-desktop">Free to use. No account to create. Naggler lives on your desktop and keeps its ledger locally. Pick your platform — you're running in under a minute.</p>
+        <p class="download-lede download-lede-mobile" hidden>Naggler is a desktop app, so it won't install on your phone. Drop us a line and we'll email you a clean set of install instructions you can open from your computer when you get back to it.</p>
 
-        <div class="download-grid">
+        <!-- Desktop: three platform buttons -->
+        <div class="download-grid download-grid-desktop">
           <!-- Windows -->
           <a href="https://github.com/MurchE/naggler-ai/releases/latest/download/Naggler.exe" class="download-btn" data-platform="windows">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
@@ -260,7 +262,16 @@
           </a>
         </div>
 
-        <p class="download-note" id="release-note">
+        <!-- Mobile: single email-me-the-link CTA -->
+        <div class="download-mobile" hidden>
+          <a href="mailto:feedback@naggler.com?subject=Send%20me%20the%20Naggler%20download%20link&body=Hi%20Naggy%20%E2%80%94%20I'm%20on%20my%20phone%20right%20now.%20Please%20send%20me%20the%20download%20link%20so%20I%20can%20install%20Naggler%20when%20I'm%20back%20at%20my%20computer.%20Thanks!" class="btn btn-mobile-email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email me the download link
+          </a>
+          <p class="download-mobile-note">Your email app will open with a pre-filled message to <strong>feedback@naggler.com</strong>. Send it, and Naggy will reply with install instructions within a day.</p>
+        </div>
+
+        <p class="download-note download-lede-desktop" id="release-note">
           v1.9.4 · Unsigned builds — first-launch warning is normal, we're <a href="https://github.com/MurchE/naggler-ai/blob/master/CHANGELOG.md" style="color: inherit; text-decoration: underline;">working on signing</a>.
         </p>
       </div>

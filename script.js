@@ -1,6 +1,22 @@
-// Naggler landing — tiny JS layer for scroll reveals + OS-aware download.
+// Naggler landing — tiny JS layer.
 // Adding .js marker so progressive-enhancement CSS rules activate.
 document.documentElement.classList.add("js");
+
+// Mobile device detection — Naggler is desktop-only, so on phones we
+// swap the three platform buttons for a single "email me the link" CTA.
+// Defensive: fall back to desktop view if detection fails.
+(function detectMobile() {
+  const ua = navigator.userAgent || "";
+  const isMobile =
+    /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua)
+    || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
+  if (!isMobile) return;
+  document.documentElement.classList.add("is-mobile");
+  // Swap the visible block
+  document.querySelectorAll(".download-lede-desktop").forEach(el => el.hidden = true);
+  document.querySelectorAll(".download-grid-desktop").forEach(el => el.hidden = true);
+  document.querySelectorAll(".download-lede-mobile, .download-mobile").forEach(el => el.hidden = false);
+})();
 
 // 1. Scroll reveal — unfold elements as they come into view.
 const observer = new IntersectionObserver((entries) => {

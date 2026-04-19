@@ -869,6 +869,40 @@ section {
   font-style: italic;
 }
 
+/* ─── Mobile email-me-download flow ─── */
+.download-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.btn-mobile-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1rem 1.5rem;
+  background: var(--cream);
+  color: var(--slate);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: var(--step-0);
+  text-decoration: none;
+  box-shadow: 0 2px 0 #c28a4e, 0 12px 24px -8px rgba(245, 194, 142, 0.5);
+  transition: transform 160ms cubic-bezier(.2, .9, .3, 1.4);
+}
+.btn-mobile-email:hover { transform: translateY(-1px); color: var(--slate); }
+.btn-mobile-email svg { width: 18px; height: 18px; }
+.download-mobile-note {
+  color: color-mix(in srgb, var(--quill) 70%, transparent);
+  font-size: var(--step--1);
+  margin: 0;
+  max-width: 40ch;
+  line-height: 1.5;
+  text-align: center;
+}
+.download-mobile-note strong { color: var(--cream); font-weight: 500; }
+
 /* ─── Closing — the punctuation on the whole page ─────────────
    v5: this is the moment. Big Fraunces italic, cream on slate, full
    viewport width, emotional beat. Not a fortune cookie anymore. */
