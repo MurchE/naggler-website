@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Naggler download link</title>
+</head>
+<!--
+  Branded HTML email template for Naggler.
+
+  Use when someone pings feedback@naggler.com from mobile asking for a
+  download link (triggered by the "Email me the download link" button
+  on naggler.com). Copy this whole file's <body> content into your
+  email client's HTML source, or paste as-is into a service like Gmail
+  (which accepts rich HTML), or use it as the body for a
+  Resend/Postmark template later.
+
+  All CSS is inline-safe — no external stylesheets, web fonts fall
+  back to system stacks, palette is the Naggler brand.
+
+  Swap {{NAME}} for the recipient's name before sending.
+-->
+<body style="margin:0;padding:0;background:#faf8f5;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#1e293b;">
+
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background:#faf8f5;padding:32px 16px;">
+    <tr>
+      <td align="center">
+
+        <!-- Main card -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="max-width:560px;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+
+          <!-- Header with Naggy -->
+          <tr>
+            <td style="padding:32px 32px 8px;text-align:center;background:#dbeafe;">
+              <img src="https://naggler.com/assets/naggy-wave.png" alt="Naggy waving" width="120" height="120" style="display:inline-block;margin:0 auto;width:120px;height:auto;" />
+            </td>
+          </tr>
+
+          <!-- Greeting -->
+          <tr>
+            <td style="padding:24px 32px 8px;text-align:center;">
+              <h1 style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:500;line-height:1.1;color:#1e293b;letter-spacing:-0.02em;">
+                Hey {{NAME}} — <em style="color:#f4845f;">here I am.</em>
+              </h1>
+              <p style="margin:0;font-size:14px;color:#64748b;line-height:1.55;">
+                You asked Naggy (hi, that's me) to send over install instructions. Grab the right build for your computer below. No account. No payment. No nonsense.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Download buttons -->
+          <tr>
+            <td style="padding:24px 32px 16px;">
+
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td style="padding:8px 0;">
+                    <a href="https://github.com/MurchE/naggler-ai/releases/latest/download/Naggler.exe" style="display:block;text-decoration:none;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;color:#1e293b;">
+                      <span style="display:block;font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;margin-bottom:2px;">Windows 10 or 11</span>
+                      <strong style="font-size:15px;color:#1e293b;">⬇ Naggler.exe</strong>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;">
+                    <a href="https://github.com/MurchE/naggler-ai/releases/latest" style="display:block;text-decoration:none;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;color:#1e293b;">
+                      <span style="display:block;font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;margin-bottom:2px;">macOS (Intel or Apple Silicon)</span>
+                      <strong style="font-size:15px;color:#1e293b;">⬇ Naggler-macos.zip</strong>
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:8px 0;">
+                    <a href="https://github.com/MurchE/naggler-ai/releases/latest" style="display:block;text-decoration:none;background:#ffffff;border:1px solid #e2e8f0;border-radius:10px;padding:14px 16px;color:#1e293b;">
+                      <span style="display:block;font-family:'Courier New',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;margin-bottom:2px;">Linux (x86_64, beta)</span>
+                      <strong style="font-size:15px;color:#1e293b;">⬇ Naggler-linux.tar.gz</strong>
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Install notes -->
+          <tr>
+            <td style="padding:0 32px 24px;">
+              <div style="background:#fdf5ea;border:1px solid #f9dbb9;border-radius:10px;padding:14px 18px;">
+                <p style="margin:0 0 8px;font-size:13px;color:#9c5a1d;font-weight:500;">Heads-up on the first launch:</p>
+                <p style="margin:0;font-size:13px;color:#1e293b;line-height:1.55;">
+                  Naggler isn't signed yet (we're working on it), so Windows will warn <em>"Windows protected your PC"</em> and macOS will say <em>"Naggler can't be opened because the developer can't be verified."</em>
+                  On Windows: click <strong>More info → Run anyway</strong>.
+                  On macOS: right-click the app → <strong>Open → Open</strong>.
+                  This is a one-time thing.
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <!-- What to expect -->
+          <tr>
+            <td style="padding:0 32px 24px;">
+              <h2 style="margin:0 0 10px;font-family:Georgia,'Times New Roman',serif;font-size:18px;font-weight:500;color:#1e293b;letter-spacing:-0.01em;">
+                First two minutes after you open it:
+              </h2>
+              <ol style="margin:0;padding-left:20px;font-size:14px;color:#1e293b;line-height:1.7;">
+                <li>Type three things you said matter today.</li>
+                <li>Click <strong>Start Session</strong>. Minimize and forget about me.</li>
+                <li>Every few minutes I'll peek in with a tiny popup. Click the task you're on. I'm gone.</li>
+                <li>End of day — check <strong>Today's Focus</strong> to see where your time actually went.</li>
+              </ol>
+            </td>
+          </tr>
+
+          <!-- Closing -->
+          <tr>
+            <td style="padding:8px 32px 32px;text-align:center;">
+              <p style="margin:0 0 8px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;color:#1e293b;letter-spacing:-0.01em;">
+                Mo' Naggy. <em style="color:#f4845f;">Less problems.</em>
+              </p>
+              <p style="margin:0;font-size:11px;font-family:'Courier New',monospace;color:#64748b;letter-spacing:0.1em;text-transform:uppercase;">
+                — Naggy, your tiny attention coach
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+        <!-- Footer -->
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="max-width:560px;">
+          <tr>
+            <td style="padding:20px 16px 8px;text-align:center;font-size:11px;color:#94a3b8;line-height:1.6;">
+              You got this email because you asked for a download link at <a href="https://naggler.com" style="color:#94a3b8;text-decoration:underline;">naggler.com</a>. Reply any time — I read everything at <a href="mailto:feedback@naggler.com" style="color:#94a3b8;text-decoration:underline;">feedback@naggler.com</a>.
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
