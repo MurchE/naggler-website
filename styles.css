@@ -865,43 +865,154 @@ section {
 .download-note {
   color: color-mix(in srgb, var(--quill) 60%, transparent);
   font-size: var(--step--1);
-  margin: 0;
-  font-style: italic;
+  margin: 2rem auto 0;
+  max-width: 46ch;
+  line-height: 1.55;
+}
+.download-note a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+.download-note a:hover { color: var(--coral); }
+.version-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: rgba(250, 248, 245, 0.1);
+  color: var(--quill);
+  padding: 1px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
 }
 
-/* ─── Mobile email-me-download flow ─── */
-.download-mobile {
+/* ─── Email signup form — v10 gated download flow ─── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+.signup-form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+  max-width: 30rem;
+  margin: 0 auto 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.btn-mobile-email {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.625rem;
-  padding: 1rem 1.5rem;
-  background: var(--cream);
-  color: var(--slate);
+.signup-form input[type="email"] {
+  flex: 1 1 16rem;
+  min-width: 0;
+  padding: 0.95rem 1.1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-sm);
-  font-weight: 500;
+  color: var(--quill);
+  font-family: var(--font-body);
   font-size: var(--step-0);
-  text-decoration: none;
-  box-shadow: 0 2px 0 #c28a4e, 0 12px 24px -8px rgba(245, 194, 142, 0.5);
-  transition: transform 160ms cubic-bezier(.2, .9, .3, 1.4);
+  transition: border-color 160ms, background 160ms, box-shadow 160ms;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.btn-mobile-email:hover { transform: translateY(-1px); color: var(--slate); }
-.btn-mobile-email svg { width: 18px; height: 18px; }
-.download-mobile-note {
-  color: color-mix(in srgb, var(--quill) 70%, transparent);
+.signup-form input[type="email"]::placeholder {
+  color: color-mix(in srgb, var(--quill) 40%, transparent);
+}
+.signup-form input[type="email"]:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--blue-70);
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.2);
+}
+.signup-form input[type="email"].is-invalid {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(244, 132, 95, 0.15);
+}
+.signup-form .btn-blue {
+  flex: 0 0 auto;
+  padding: 0.95rem 1.5rem;
+}
+.signup-form .btn-blue[disabled] {
+  opacity: 0.6;
+  cursor: wait;
+}
+.signup-error {
+  flex-basis: 100%;
+  color: var(--coral);
   font-size: var(--step--1);
-  margin: 0;
-  max-width: 40ch;
-  line-height: 1.5;
+  margin: 0.5rem 0 0;
   text-align: center;
 }
-.download-mobile-note strong { color: var(--cream); font-weight: 500; }
+
+.signup-success {
+  max-width: 32rem;
+  margin: 0 auto 1.5rem;
+  padding: 1.75rem 1.5rem;
+  background: rgba(126, 201, 164, 0.12);
+  border: 1px solid rgba(126, 201, 164, 0.3);
+  border-radius: var(--radius-md);
+  text-align: center;
+  animation: success-pop 320ms cubic-bezier(.2, .9, .3, 1.4);
+}
+@keyframes success-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.signup-success-icon img {
+  width: 72px;
+  height: auto;
+  margin: 0 auto 0.5rem;
+  display: block;
+  filter: drop-shadow(0 6px 12px rgba(126, 201, 164, 0.4));
+}
+.signup-success h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--quill);
+  font-variation-settings: "opsz" 48, "SOFT" 50;
+}
+.signup-success p {
+  color: color-mix(in srgb, var(--quill) 75%, transparent) !important;
+  font-size: var(--step-0) !important;
+  margin: 0 !important;
+  max-width: none !important;
+  line-height: 1.55;
+}
+.signup-success p em { color: var(--cream); font-style: italic; }
+
+.signup-escape {
+  margin: 1.5rem auto 0;
+  max-width: 32rem;
+  font-size: var(--step--1);
+  color: color-mix(in srgb, var(--quill) 55%, transparent);
+}
+.signup-escape summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--quill) 65%, transparent);
+  padding: 0.25rem 0;
+  transition: color 160ms;
+  list-style: none;
+}
+.signup-escape summary::-webkit-details-marker { display: none; }
+.signup-escape summary::before {
+  content: "↳ ";
+  color: var(--cream);
+  margin-right: 0.25rem;
+}
+.signup-escape summary:hover { color: var(--quill); }
+.signup-escape p {
+  color: color-mix(in srgb, var(--quill) 65%, transparent) !important;
+  font-size: var(--step--1) !important;
+  margin: 0.5rem 0 0 !important;
+  line-height: 1.55;
+  max-width: none !important;
+}
+.signup-escape a { color: var(--cream); text-decoration: underline; text-underline-offset: 3px; }
+.signup-escape a:hover { color: var(--coral); }
 
 /* ─── Closing — the punctuation on the whole page ─────────────
    v5: this is the moment. Big Fraunces italic, cream on slate, full
@@ -932,6 +1043,21 @@ section {
   background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
   opacity: 0.18;
   pointer-events: none;
+}
+
+.closing-crown {
+  display: block;
+  width: clamp(90px, 10vw, 130px);
+  height: auto;
+  margin: 0 auto 1.5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 24px rgba(245, 194, 142, 0.35));
+  animation: crown-float 4s ease-in-out infinite;
+}
+@keyframes crown-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .closing blockquote {
@@ -973,14 +1099,16 @@ section {
 .footer-inner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.5rem 2rem;
 }
+.footer-left { display: flex; flex-direction: column; gap: 0.4rem; }
 .footer-links {
   display: flex;
   gap: 1.25rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 .footer-links a { color: var(--slate-500); }
 .footer-links a:hover { color: var(--slate); }
@@ -992,6 +1120,16 @@ section {
   color: var(--slate-500);
 }
 .footer-signature em { color: var(--coral); font-style: normal; }
+
+.footer-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--slate-500);
+  opacity: 0.8;
+}
+.footer-meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.footer-meta a:hover { color: var(--slate); }
 
 /* Subtle staggered entrance — CSS-only, fires on load, no JS/observer
    dependency so it works under prerender, screenshot, and no-JS. */
@@ -1009,6 +1147,102 @@ section {
 .how-grid .step:nth-child(1) { animation-delay: 40ms; }
 .how-grid .step:nth-child(2) { animation-delay: 140ms; }
 .how-grid .step:nth-child(3) { animation-delay: 240ms; }
+
+/* ─── Legal pages (privacy.html, terms.html) ───────────────────
+   Editorial long-form layout. Shares nav + footer with index.html.
+   Keeps the warm cream palette; no slate panels so it feels like a
+   reading room, not a legal PDF. */
+.legal {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 6rem;
+}
+.legal .container { padding: 0; max-width: none; }
+
+.legal-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 2rem + 2vw, 3.75rem);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin: 0.25rem 0 1.5rem;
+  color: var(--slate);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+.legal-lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-2);
+  line-height: 1.4;
+  color: var(--slate);
+  margin: 0 0 2rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--coral);
+  font-variation-settings: "opsz" 72, "SOFT" 80;
+}
+
+.legal-updated {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  margin: 0 0 3rem;
+}
+
+.legal section {
+  padding: 0;
+  margin: 0 0 2.5rem;
+}
+.legal section h2 {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.75rem;
+  color: var(--slate);
+  font-variation-settings: "opsz" 48, "SOFT" 50;
+}
+.legal section p,
+.legal section li {
+  font-size: var(--step-0);
+  line-height: 1.7;
+  color: var(--slate);
+}
+.legal section p { margin: 0 0 1rem; }
+.legal section ul,
+.legal section ol {
+  padding-left: 1.25rem;
+  margin: 0 0 1rem;
+}
+.legal section li { margin-bottom: 0.5rem; }
+.legal section code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--quill-dark);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--slate);
+}
+.legal a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.legal a:hover { color: var(--blue-deep); }
+
+.legal-close {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-1);
+  color: var(--slate-500);
+  margin: 3rem 0 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--slate-200);
+  text-align: center;
+  font-variation-settings: "opsz" 48, "SOFT" 50;
+}
 
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {

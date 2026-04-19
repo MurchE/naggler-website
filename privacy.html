@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy — Naggler</title>
+  <meta name="description" content="Short, honest privacy policy for Naggler. What we store, what we don't, and what you can ask us to delete." />
+  <meta name="theme-color" content="#faf8f5" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">N</span>
+        <span>Naggler</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#team">Meet Naggy</a>
+        <a href="/#talk">Talk to him</a>
+        <a href="/#how">How it works</a>
+        <a href="https://github.com/MurchE/naggler-ai" target="_blank" rel="noopener">Github</a>
+        <a href="/#download" class="btn btn-primary">Download</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <div class="container">
+      <span class="section-kicker">Privacy</span>
+      <h1 class="legal-title">The short version.</h1>
+      <p class="legal-lede">
+        Naggler is a small desktop app that stores your task check-ins in a SQLite file on your own computer. It does not have user accounts, does not track you, and does not phone home. This page says the same thing in more words because browsers expect a link called "Privacy."
+      </p>
+
+      <p class="legal-updated">Last updated: April 19, 2026</p>
+
+      <section>
+        <h2>What lives on your computer only</h2>
+        <ul>
+          <li>Your task list, priority rankings, and check-in history — all stored at <code>~/.naggler/naggler.db</code> (or <code>C:\Users\you\.naggler\naggler.db</code> on Windows).</li>
+          <li>Your settings — cadence, quiet hours, snooze rules, theme.</li>
+          <li>Any chats you have with Naggy if you're using a local model (Ollama) or your own API key.</li>
+        </ul>
+        <p>This data never leaves your machine unless you export it yourself or ask an AI provider to look at it (see below).</p>
+      </section>
+
+      <section>
+        <h2>What happens when you talk to Naggy</h2>
+        <p>Naggler can call an AI model on your behalf. You choose one of three modes in Settings:</p>
+        <ol>
+          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed through our Cloudflare Worker to Anthropic's Claude API. We apply a per-install daily rate limit (100 requests/day). The relay does not log message content — it only stores a daily counter keyed by your anonymous install ID.</li>
+          <li><strong>Your own API key.</strong> We hand your request directly to Anthropic using the key you provided. We don't see it.</li>
+          <li><strong>Fully local (Ollama).</strong> Nothing leaves your machine.</li>
+        </ol>
+        <p>Anthropic's handling of API data is governed by their <a href="https://www.anthropic.com/legal/privacy" rel="noopener">privacy policy</a>. As of writing, API inputs aren't used to train their models.</p>
+      </section>
+
+      <section>
+        <h2>What happens when you enter an email on naggler.com</h2>
+        <p>The email signup form on the download page does three things:</p>
+        <ul>
+          <li>Stores the email address, the country code Cloudflare reports, your browser's user-agent string, and a timestamp in a Cloudflare KV namespace we run.</li>
+          <li>Triggers an internal notification so a human (currently: the founder) knows to send you the download link.</li>
+          <li>Gets used once, and occasionally used again if we have something useful to tell you — a new signed build, a big fix, or the real launch. You can reply "stop" to any message and we'll delete your entry.</li>
+        </ul>
+        <p>We don't sell, rent, or share the list. There isn't a list product here.</p>
+      </section>
+
+      <section>
+        <h2>What we don't have</h2>
+        <ul>
+          <li>No user accounts. No password to steal.</li>
+          <li>No telemetry, analytics, or crash reporting in the app.</li>
+          <li>No cookies on naggler.com beyond what's strictly needed to serve the page. (GitHub Pages may log standard HTTP request data on their side — that's outside our control.)</li>
+          <li>No advertising, ever.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Your data, your move</h2>
+        <p>Because the database lives on your computer, your right to access and delete it is enforced by the file system. Delete the <code>~/.naggler</code> folder and the app has nothing left to say about you.</p>
+        <p>If you signed up on naggler.com and want your email removed from the KV store, write to <a href="mailto:feedback@naggler.com">feedback@naggler.com</a> — we'll confirm the delete within a couple of days.</p>
+      </section>
+
+      <section>
+        <h2>When this changes</h2>
+        <p>If we add a new thing (a real account system, third-party analytics, a paid tier with payment records), we'll update this page and tell people who signed up for the download email. We won't quietly slide something in.</p>
+      </section>
+
+      <p class="legal-close">
+        Questions? <a href="mailto:feedback@naggler.com">feedback@naggler.com</a>. A human reads every one.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-signature">Made with <em>naggy pokes</em> by a small cast of hedgehogs.</div>
+        <div class="footer-meta">
+          © <span id="footer-year">2026</span> Naggler ·
+          <a href="mailto:feedback@naggler.com">feedback@naggler.com</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="https://github.com/MurchE/naggler-ai">GitHub</a>
+        <a href="https://github.com/MurchE/naggler-ai/blob/master/CHANGELOG.md">Changelog</a>
+        <span class="pill">v1.9.4</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
