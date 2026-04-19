@@ -14,22 +14,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-// 2. OS-aware download button emphasis — highlight the platform you're on.
-const ua = navigator.userAgent.toLowerCase();
-let platform = null;
-if (ua.includes("win")) platform = "windows";
-else if (ua.includes("mac")) platform = "mac";
-else if (ua.includes("linux")) platform = "linux";
-
-if (platform) {
-  const btn = document.querySelector(`.download-btn[data-platform="${platform}"]`);
-  if (btn) {
-    btn.style.outline = "3px solid #93c5fd";
-    btn.style.outlineOffset = "2px";
-  }
-}
-
-// 3. Pull latest version from GitHub and patch the download note + footer pill.
+// 2. Pull latest version from GitHub and patch the download note + footer pill.
 //    Non-critical — fail silently.
 (async () => {
   try {
