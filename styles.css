@@ -534,6 +534,11 @@ section {
   display: flex;
   gap: 1rem;
   align-items: flex-start;
+  /* Uniform step width — text varies, container doesn't. Keeps the
+     three steps as a tidy row (desktop) / tidy stack (mobile). */
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
 }
 
 .step-number {
@@ -577,15 +582,15 @@ section {
 }
 
 /* Step 2 — Naggy peeks around the LEFT corner of the box. Box stays
-   perpendicular (no rotation). Naggy sits same size as the other two
-   icons (72px), positioned so his right half is visible on the box and
-   his left half peeks around the left edge. */
+   perpendicular (no rotation). Same 72px as other icons. Naggy's center
+   vertical line aligns with the box's left edge — so exactly half of
+   him is on the box and half is outside, peeking around. */
 .step-icon-peek {
   overflow: visible;
 }
 .step-icon-peek .peek-img {
   position: absolute;
-  left: -40%;
+  left: -36px;     /* half of his 72px width */
   top: 12px;
   width: 72px;
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
