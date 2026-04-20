@@ -1252,11 +1252,24 @@ section {
   .how-grid { grid-template-columns: 1fr; gap: 2rem; }
   .talk-grid { grid-template-columns: 1fr; gap: 2rem; }
   .talk-providers { grid-template-columns: 1fr; }
-  .download { padding: 3rem 1.5rem; margin: 2rem auto 3rem; }
+  .download { padding: 3rem 1.25rem; margin: 2rem auto 3rem; width: min(68rem, 100% - 1.75rem); }
+  .download h2 { font-size: clamp(1.75rem, 1.4rem + 3vw, 2.25rem); word-wrap: break-word; overflow-wrap: break-word; }
+  .signup-form .btn-blue { flex: 1 1 100%; justify-content: center; }
   section { padding: 3rem 0; }
   .you-mark::after { right: -60px; font-size: 0.75rem; }
   .nav-links a:not(.btn) { display: none; }
   .closing { padding: 4rem 0 5rem; }
+  .closing blockquote { font-size: clamp(2.5rem, 2rem + 4vw, 4rem); word-wrap: break-word; }
+  .talk-provider,
+  .teammate-bio,
+  .chat-msg,
+  .signup-escape p,
+  .legal-lede,
+  .legal section p,
+  .legal section li { overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; }
+  .talk-chat { min-width: 0; }
+  .talk-chat-body { padding: 1rem; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
