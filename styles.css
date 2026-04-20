@@ -590,7 +590,7 @@ section {
 }
 .step-icon-peek .peek-img {
   position: absolute;
-  left: -36px;     /* half of his 72px width */
+  left: 0;          /* Naggy's left edge aligns with the box's left edge */
   top: 12px;
   width: 72px;
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
@@ -819,9 +819,19 @@ section {
 }
 .download p {
   color: color-mix(in srgb, var(--quill) 70%, transparent);
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 1rem;
   font-size: var(--step-1);
   max-width: 50ch;
+}
+.download .download-promise {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-0);
+  color: var(--cream);
+  margin: 0 auto 2.25rem;
+  max-width: 40ch;
+  font-variation-settings: "opsz" 36, "SOFT" 80;
+  letter-spacing: 0.01em;
 }
 
 .download-grid {
@@ -930,6 +940,10 @@ section {
 .signup-form .btn-blue {
   flex: 0 0 auto;
   padding: 0.95rem 1.5rem;
+  justify-content: center;
+}
+.signup-form .btn-blue svg {
+  flex-shrink: 0;
 }
 .signup-form .btn-blue[disabled] {
   opacity: 0.6;
@@ -1045,15 +1059,36 @@ section {
   pointer-events: none;
 }
 
-.closing-crown {
+.closing-crown-wrap {
   display: block;
-  width: clamp(90px, 10vw, 130px);
-  height: auto;
+  width: clamp(130px, 14vw, 180px);
+  height: clamp(130px, 14vw, 180px);
   margin: 0 auto 1.5rem;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 12px 24px rgba(245, 194, 142, 0.35));
   animation: crown-float 4s ease-in-out infinite;
+}
+/* Soft cream halo behind Naggy — keeps his light tones vivid
+   against the dark slate without feeling like a sticker */
+.closing-crown-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(253, 245, 234, 0.55) 0%,
+    rgba(253, 245, 234, 0.25) 40%,
+    transparent 70%
+  );
+  filter: blur(4px);
+  z-index: -1;
+}
+.closing-crown {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(245, 194, 142, 0.45));
 }
 @keyframes crown-float {
   0%, 100% { transform: translateY(0); }
