@@ -18,21 +18,20 @@ document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 const yearEl = document.getElementById("footer-year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// 2. Pull latest version from GitHub and patch the download note + footer pill.
-//    Non-critical — fail silently.
+// 2. Pull current version from same-origin version.json and patch the
+//    download note + footer pill. The source repo is private so we can't
+//    hit the GitHub API; the website repo carries the canonical version
+//    string and gets updated on every release.
 (async () => {
   try {
-    const res = await fetch("https://api.github.com/repos/MurchE/naggler-ai/releases/latest", {
-      headers: { Accept: "application/vnd.github+json" },
-    });
+    const res = await fetch("/version.json", { cache: "no-store" });
     if (!res.ok) return;
-    const data = await res.json();
-    const tag = (data.tag_name || "").replace(/^v/, "");
-    if (!tag) return;
-    document.querySelectorAll(".version-pill").forEach(el => el.textContent = `v${tag}`);
+    const { version } = await res.json();
+    if (!version) return;
+    document.querySelectorAll(".version-pill").forEach(el => el.textContent = `v${version}`);
     const pill = document.querySelector(".footer-links .pill");
-    if (pill) pill.textContent = `v${tag}`;
-  } catch (_) { /* offline or rate-limited — keep the baked-in version */ }
+    if (pill) pill.textContent = `v${version}`;
+  } catch (_) { /* offline — keep the baked-in version */ }
 })();
 
 // 3. Email-gated download flow — POST to relay worker, fall back to mailto.
@@ -57,6 +56,8 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   function showError(msg, withFallback = false) {
     input.classList.add("is-invalid");
+    input.setAttribute("aria-invalid", "true");
+    input.setAttribute("aria-describedby", "signup-error");
     errorEl.hidden = false;
     if (withFallback) {
       errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> or grab the <a href="https://github.com/MurchE/naggler-ai/releases/latest" style="color:inherit;text-decoration:underline;">latest GitHub release</a>.`;
@@ -67,6 +68,8 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   function clearError() {
     input.classList.remove("is-invalid");
+    input.removeAttribute("aria-invalid");
+    input.removeAttribute("aria-describedby");
     errorEl.hidden = true;
     errorEl.textContent = "";
   }

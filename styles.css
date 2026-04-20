@@ -1148,6 +1148,84 @@ section {
 .how-grid .step:nth-child(2) { animation-delay: 140ms; }
 .how-grid .step:nth-child(3) { animation-delay: 240ms; }
 
+/* ─── 404 page — warm, minimal, one-page routing back to the site ── */
+.notfound {
+  min-height: 60vh;
+  padding: 4rem 1.5rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.notfound .container { max-width: 38rem; padding: 0; }
+
+.notfound-naggy {
+  width: 120px;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter: drop-shadow(0 12px 20px rgba(30, 41, 59, 0.12));
+  animation: gentle-float 5s ease-in-out infinite;
+}
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.notfound-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.25em;
+  color: var(--coral);
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
+.notfound-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.75rem + 2vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--slate);
+  margin: 0 0 1.25rem;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+.notfound-title em {
+  font-style: italic;
+  color: var(--coral);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "WONK" 1;
+}
+
+.notfound-lede {
+  font-size: var(--step-1);
+  color: var(--slate-500);
+  line-height: 1.55;
+  margin: 0 auto 2rem;
+  max-width: 32rem;
+}
+
+.notfound-links {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 0 2.5rem;
+}
+
+.notfound-pointers {
+  font-size: var(--step--1);
+  color: var(--slate-500);
+  line-height: 1.8;
+  margin: 0;
+}
+.notfound-pointers a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin: 0 0.15rem;
+}
+.notfound-pointers a:hover { color: var(--blue-deep); }
+
 /* ─── Legal pages (privacy.html, terms.html) ───────────────────
    Editorial long-form layout. Shares nav + footer with index.html.
    Keeps the warm cream palette; no slate panels so it feels like a
