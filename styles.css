@@ -375,6 +375,7 @@ section {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
   border-top: 1px dashed var(--slate-200);
+  text-align: center;
 }
 /* Sized to match surrounding copy — no longer full-width block button. */
 .btn-block {
