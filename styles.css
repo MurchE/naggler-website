@@ -781,6 +781,11 @@ section {
   font-size: var(--step--1);
   line-height: 1.5;
 }
+/* BYOK acronym hint — the B/Y/O/K letters in "Bring Your Own Key"
+   tinted brand-blue so the acronym reads at a glance for the nerds. */
+.byok-letter {
+  color: var(--blue);
+}
 
 /* ─── Download ─────────────────────────────────────────────── */
 .download {
