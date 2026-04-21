@@ -781,11 +781,6 @@ section {
   font-size: var(--step--1);
   line-height: 1.5;
 }
-/* BYOK acronym hint — the B/Y/O/K letters in "Bring Your Own Key"
-   tinted brand-blue so the acronym reads at a glance for the nerds. */
-.byok-letter {
-  color: var(--blue);
-}
 
 /* ─── Download ─────────────────────────────────────────────── */
 .download {
@@ -871,6 +866,10 @@ section {
   text-decoration: none;
   transition: transform 160ms cubic-bezier(.2, .9, .3, 1.4), box-shadow 160ms;
   box-shadow: 0 2px 0 var(--slate-200), 0 12px 24px -8px rgba(0, 0, 0, 0.3);
+  /* Uniform width — content varies but the trio reads as a set. */
+  flex: 0 0 240px;
+  width: 240px;
+  box-sizing: border-box;
 }
 .download-btn:hover {
   transform: translateY(-2px);
@@ -887,6 +886,9 @@ section {
   margin-bottom: 2px;
 }
 .download-btn svg { width: 24px; height: 24px; flex-shrink: 0; }
+/* Apple's logo glyph reads visually smaller than the Windows/Linux
+   marks at the same px size — give it ~17% bump so the trio balances. */
+.download-btn[data-platform="mac"] svg { width: 28px; height: 28px; }
 
 .download-note {
   color: color-mix(in srgb, var(--quill) 60%, transparent);
