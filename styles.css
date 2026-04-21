@@ -1079,16 +1079,15 @@ section {
   z-index: 1;
   animation: crown-float 4s ease-in-out infinite;
 }
-/* Solid cream disc behind Naggy — sized smaller than his silhouette so
-   it never pokes out past his outline, but big enough to fully cover his
-   torso/face. Naggy reads as a solid sprite; slate never bleeds through
-   the transparent gaps in the PNG. No halo, no feather. */
+/* Solid cream ellipse behind Naggy — sized to track his silhouette:
+   taller than wide, because he's taller than he is wide. Covers
+   head-through-feet without poking out the sides. No halo, no feather. */
 .closing-crown-wrap::before {
   content: "";
   position: absolute;
-  width: 58%;
-  height: 58%;
-  top: 52%;
+  width: 52%;
+  height: 80%;
+  top: 54%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: var(--cream);
