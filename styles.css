@@ -586,22 +586,12 @@ section {
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
 }
 
-/* Step 2 — Naggy lives fully INSIDE the coral box, flush against the
-   left wall, no padding. The peek PNG is already cropped at his
-   centerline, so anchoring the image to the left edge of the box puts
-   his face right against the wall — like he's poking out from behind it. */
+/* Step 2 — Naggy same 72px size as the other two boxes, but flush
+   against the left wall instead of centered. Flex parent already
+   vertical-centers; we just override horizontal alignment to flex-start. */
 .step-icon-peek {
   overflow: hidden;
-}
-.step-icon-peek .peek-img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left center;
-  filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
+  justify-content: flex-start;
 }
 
 .step h3 {
