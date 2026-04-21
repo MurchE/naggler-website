@@ -2,6 +2,21 @@
 // Adding .js marker so progressive-enhancement CSS rules activate.
 document.documentElement.classList.add("js");
 
+// Mobile detect — Naggler is desktop-only. On phones we hide the three
+// platform buttons and show an email-me-the-link form instead, so the
+// user can finish the install when they're back at their computer.
+// Defensive default = desktop view (covers no-JS users and detection misses).
+(function detectMobile() {
+  const ua = navigator.userAgent || "";
+  const isMobile =
+    /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua)
+    || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
+  if (!isMobile) return;
+  document.documentElement.classList.add("is-mobile");
+  document.querySelectorAll(".download-desktop-only").forEach(el => el.hidden = true);
+  document.querySelectorAll(".download-mobile-only").forEach(el => el.hidden = false);
+})();
+
 // 1. Scroll reveal — unfold elements as they come into view.
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

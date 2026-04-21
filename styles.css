@@ -4,6 +4,11 @@
    Fonts: Fraunces (display) + Geist Sans (body)
    ───────────────────────────────────────────────────────────── */
 
+/* Honour the HTML `hidden` attribute even on elements that have
+   author display rules (.download-grid is flex, .signup-form is flex).
+   Without this, JS-toggled hiding silently breaks. */
+[hidden] { display: none !important; }
+
 :root {
   /* Naggler palette (from BRAND.md) */
   --blue: #3b82f6;
@@ -581,18 +586,21 @@ section {
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
 }
 
-/* Step 2 — Naggy peeks around the LEFT corner of the box. Box stays
-   perpendicular (no rotation). Same 72px as other icons. Naggy's center
-   vertical line aligns with the box's left edge — so exactly half of
-   him is on the box and half is outside, peeking around. */
+/* Step 2 — Naggy lives fully INSIDE the coral box, flush against the
+   left wall, no padding. The peek PNG is already cropped at his
+   centerline, so anchoring the image to the left edge of the box puts
+   his face right against the wall — like he's poking out from behind it. */
 .step-icon-peek {
-  overflow: visible;
+  overflow: hidden;
 }
 .step-icon-peek .peek-img {
   position: absolute;
-  left: 0;          /* Naggy's left edge aligns with the box's left edge */
-  top: 12px;
-  width: 72px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
 }
 
@@ -1071,19 +1079,20 @@ section {
   z-index: 1;
   animation: crown-float 4s ease-in-out infinite;
 }
-/* Soft cream halo behind Naggy — keeps his light tones vivid
-   against the dark slate without feeling like a sticker */
+/* Solid cream disc behind Naggy — sized smaller than his silhouette so
+   it never pokes out past his outline, but big enough to fully cover his
+   torso/face. Naggy reads as a solid sprite; slate never bleeds through
+   the transparent gaps in the PNG. No halo, no feather. */
 .closing-crown-wrap::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(253, 245, 234, 0.55) 0%,
-    rgba(253, 245, 234, 0.25) 40%,
-    transparent 70%
-  );
-  filter: blur(4px);
+  width: 58%;
+  height: 58%;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cream);
+  border-radius: 50%;
   z-index: -1;
 }
 .closing-crown {
