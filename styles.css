@@ -181,12 +181,12 @@ a:hover { color: var(--blue-deep); }
 }
 .btn:active { transform: translateY(1px); }
 
-.btn-primary {
+.btn.btn-primary {
   background: var(--blue);
   color: white;
   box-shadow: 0 2px 0 var(--blue-deep), 0 8px 20px -8px rgba(59, 130, 246, 0.5);
 }
-.btn-primary:hover { background: var(--blue-hover); color: white; transform: translateY(-1px); }
+.btn.btn-primary:hover { background: var(--blue-hover); color: white; transform: translateY(-1px); }
 
 .btn-blue {
   background: var(--blue);
@@ -599,7 +599,7 @@ section {
 }
 .step-icon-peek .peek-img {
   position: absolute;
-  left: -20px;
+  left: -30px;
   top: 50%;
   transform: translateY(-50%);
   width: 72px;
