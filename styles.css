@@ -182,11 +182,11 @@ a:hover { color: var(--blue-deep); }
 .btn:active { transform: translateY(1px); }
 
 .btn-primary {
-  background: var(--slate);
-  color: var(--quill);
-  box-shadow: 0 2px 0 #0f172a, 0 8px 20px -8px rgba(30, 41, 59, 0.4);
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 2px 0 var(--blue-deep), 0 8px 20px -8px rgba(59, 130, 246, 0.5);
 }
-.btn-primary:hover { background: #0f172a; color: var(--quill); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--blue-hover); color: white; transform: translateY(-1px); }
 
 .btn-blue {
   background: var(--blue);
@@ -586,12 +586,24 @@ section {
   filter: drop-shadow(0 6px 10px rgba(30, 41, 59, 0.15));
 }
 
-/* Step 2 — Naggy same 72px size as the other two boxes, but flush
-   against the left wall instead of centered. Flex parent already
-   vertical-centers; we just override horizontal alignment to flex-start. */
+/* Step 2 — Naggy peeks around the box's left wall like it's a stage
+   edge. The peek PNG has ~28% transparent padding on its LEFT before
+   Naggy's cropped silhouette begins, so naive left-alignment leaves him
+   floating in the middle. Shifting the image LEFT by that padding
+   amount slides Naggy's cut edge flush against the box's left wall —
+   his visible face/body then extends rightward into the box, selling
+   the illusion that his body is "off-stage" past the left edge.
+   Same 72px render size as the other two boxes. */
 .step-icon-peek {
   overflow: hidden;
-  justify-content: flex-start;
+}
+.step-icon-peek .peek-img {
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 72px;
+  height: auto;
 }
 
 .step h3 {
