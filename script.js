@@ -75,7 +75,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     input.setAttribute("aria-describedby", "signup-error");
     errorEl.hidden = false;
     if (withFallback) {
-      errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> or grab the <a href="https://github.com/MurchE/naggler-ai/releases/latest" style="color:inherit;text-decoration:underline;">latest GitHub release</a>.`;
+      errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> or grab the <a href="https://github.com/MurchE/naggler-downloads/releases/latest" style="color:inherit;text-decoration:underline;">latest GitHub release</a>.`;
     } else {
       errorEl.textContent = msg;
     }

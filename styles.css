@@ -1015,6 +1015,27 @@ section {
 }
 .signup-success p em { color: var(--cream); font-style: italic; }
 
+/* Prominent escape hatch on the signup-success card — gives users on
+ * desktop (or impatient mobile users) a clear "grab it now from GitHub"
+ * option without digging into the collapsed <details> below. Added when
+ * auto-email was still manual, so mobile users weren't stuck waiting for
+ * a human to send them links. */
+.signup-success .signup-escape-prominent {
+  margin-top: 1rem !important;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5rem;
+  font-size: var(--step--1);
+}
+.signup-success .signup-escape-prominent strong {
+  color: var(--cream);
+}
+.signup-success .signup-escape-prominent a {
+  color: var(--quill);
+  text-decoration: underline;
+}
+
 .signup-escape {
   margin: 1.5rem auto 0;
   max-width: 32rem;
