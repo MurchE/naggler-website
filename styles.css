@@ -1399,6 +1399,253 @@ section {
   font-variation-settings: "opsz" 48, "SOFT" 50;
 }
 
+/* ─── Under the hood teaser (home, bottom of .talk) ────────── */
+.under-hood {
+  margin-top: 3.5rem;
+  position: relative;
+  z-index: 1;
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+.under-hood-inner {
+  max-width: 52rem;
+  margin-inline: auto;
+  text-align: left;
+}
+.under-hood .section-kicker {
+  margin-bottom: 0.5rem;
+}
+.under-hood-title {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  font-variation-settings: "opsz" 48, "SOFT" 50, "WONK" 0;
+  margin: 0 0 0.75rem;
+  color: var(--slate);
+}
+.under-hood-body {
+  color: var(--slate-500);
+  font-size: var(--step-0);
+  line-height: 1.55;
+  max-width: none;
+  margin-bottom: 1.25rem;
+}
+.under-hood-body strong {
+  color: var(--slate);
+  font-weight: 600;
+}
+.under-hood-cta {
+  display: inline-flex;
+}
+
+/* ─── FAQ page ─────────────────────────────────────────────── */
+.faq-hero {
+  padding: 3.25rem 0 1.5rem;
+  text-align: center;
+}
+.faq-hero-title {
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  margin: 0.75rem 0 1.25rem;
+  line-height: 1.05;
+}
+.faq-hero-lede {
+  color: var(--slate-500);
+  font-size: var(--step-1);
+  line-height: 1.5;
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
+/* Naggy's brain — three option cards */
+.brain {
+  padding: 1rem 0 4rem;
+  position: relative;
+}
+.brain .tight { text-align: center; margin-bottom: 2rem; }
+.brain .tight .section-title { margin-inline: auto; }
+.brain .section-lede { margin-inline: auto; max-width: 52ch; }
+
+.brain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.brain-card {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.brain-card-default {
+  border-color: var(--blue-70);
+  box-shadow: 0 0 0 4px var(--blue-90), var(--shadow-md);
+}
+.brain-badge {
+  position: absolute;
+  top: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: white;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px -2px rgba(59, 130, 246, 0.4);
+}
+.brain-portrait {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--quill-dark);
+  border-radius: 50%;
+}
+.brain-portrait img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+.brain-role {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate-500);
+  margin-bottom: 0.4rem;
+}
+.brain-name {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  margin: 0 0 0.85rem;
+  font-variation-settings: "opsz" 36, "SOFT" 50;
+}
+.brain-lede {
+  color: var(--slate);
+  font-size: var(--step--1);
+  line-height: 1.55;
+  margin-bottom: 1rem;
+  max-width: none;
+}
+.brain-facts {
+  list-style: none;
+  padding: 0;
+  margin: auto 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--slate-200);
+  padding-top: 1rem;
+}
+.brain-facts li {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--slate-500);
+}
+.brain-facts strong {
+  color: var(--slate);
+  font-weight: 600;
+  display: inline;
+  margin-right: 0.25rem;
+}
+.brain-footnote {
+  text-align: center;
+  color: var(--slate-500);
+  font-size: var(--step--1);
+  margin: 2.5rem auto 0;
+  max-width: 56ch;
+}
+
+/* FAQ list */
+.faq-list {
+  padding: 2rem 0 5rem;
+  background: var(--quill-dark);
+}
+.faq-list .tight {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.faq-list .tight .section-title { margin-inline: auto; }
+.faq-items {
+  max-width: 52rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: white;
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 500;
+  font-variation-settings: "opsz" 24, "SOFT" 50;
+  color: var(--slate);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+";
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  color: var(--slate-500);
+  transition: transform 200ms ease;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item[open] summary {
+  border-bottom: 1px solid var(--slate-200);
+}
+.faq-answer {
+  padding: 1.1rem 1.5rem 1.3rem;
+  color: var(--slate-500);
+  font-size: var(--step-0);
+  line-height: 1.6;
+}
+.faq-answer p { margin-bottom: 0.75rem; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer strong { color: var(--slate); }
+
+.faq-close {
+  max-width: 52rem;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+.faq-close p {
+  color: var(--slate-500);
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+
 /* ─── Responsive ───────────────────────────────────────────── */
 @media (max-width: 900px) {
   .hero { padding: 1.75rem 0 2.5rem; }
@@ -1425,6 +1672,12 @@ section {
   .talk-chat { min-width: 0; }
   .talk-chat-body { padding: 1rem; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
+  .under-hood { padding: 1.5rem 1.25rem; }
+  .brain-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .brain-card-default { margin-top: 0.5rem; }
+  .faq-hero { padding: 2.5rem 0 2rem; }
+  .faq-item summary { padding: 0.9rem 1.1rem; font-size: var(--step-0); }
+  .faq-answer { padding: 0.9rem 1.1rem 1.1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
