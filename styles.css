@@ -599,7 +599,7 @@ section {
 }
 .step-icon-peek .peek-img {
   position: absolute;
-  left: -25px;
+  left: -23px;
   top: 50%;
   transform: translateY(-50%);
   width: 72px;
@@ -1109,21 +1109,6 @@ section {
   position: relative;
   z-index: 1;
   animation: crown-float 4s ease-in-out infinite;
-}
-/* Solid cream ellipse behind Naggy — sized to track his silhouette:
-   taller than wide, because he's taller than he is wide. Covers
-   head-through-feet without poking out the sides. No halo, no feather. */
-.closing-crown-wrap::before {
-  content: "";
-  position: absolute;
-  width: 52%;
-  height: 80%;
-  top: 54%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--cream);
-  border-radius: 50%;
-  z-index: -1;
 }
 .closing-crown {
   display: block;
