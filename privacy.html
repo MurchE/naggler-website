@@ -38,7 +38,7 @@
         Naggler is a small desktop app that stores your task check-ins in a SQLite file on your own computer. It does not have user accounts, does not track you, and does not phone home. This page says the same thing in more words because browsers expect a link called "Privacy."
       </p>
 
-      <p class="legal-updated">Last updated: April 19, 2026</p>
+      <p class="legal-updated">Last updated: July 6, 2026</p>
 
       <section>
         <h2>What lives on your computer only</h2>
@@ -54,7 +54,7 @@
         <h2>What happens when you talk to Naggy</h2>
         <p>Naggler can call an AI model on your behalf. You choose one of three modes in Settings:</p>
         <ol>
-          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed through our Cloudflare Worker to Anthropic's Claude API. We apply a per-install daily rate limit (100 requests/day). The relay does not log message content — it only stores a daily counter keyed by your anonymous install ID.</li>
+          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed via our Cloudflare Worker to Anthropic's Claude API. We apply a per-install daily rate limit (100 requests/day), plus per-network and overall daily caps to protect the shared free tier. The relay does not log message content — it only stores daily counters keyed by your anonymous install ID (and, for the network/overall caps, your IP and the date).</li>
           <li><strong>Your own API key.</strong> We hand your request directly to Anthropic using the key you provided. We don't see it.</li>
           <li><strong>Fully local (Ollama).</strong> Nothing leaves your machine.</li>
         </ol>
@@ -113,7 +113,7 @@
         <a href="/terms.html">Terms</a>
         <a href="https://github.com/MurchE/naggler-ai">GitHub</a>
         <a href="https://github.com/MurchE/naggler-ai/blob/master/CHANGELOG.md">Changelog</a>
-        <span class="pill">v1.9.4</span>
+        <span class="pill">v1.10.12</span>
       </div>
     </div>
   </footer>
