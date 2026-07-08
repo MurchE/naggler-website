@@ -50,7 +50,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 })();
 
 // 2b. Direct-download resolver. Asset filenames are version-stamped
-//     (Naggler-vX.Y.Z-macos.zip), so we can't hard-link a stable URL for Mac
+//     (Naggler-vX.Y.Z-macos.dmg), so we can't hard-link a stable URL for Mac
 //     /Linux the way we can for Windows' fixed "Naggler.exe". The downloads
 //     repo is PUBLIC, so resolve each platform button to the latest release's
 //     real browser_download_url at load time. Buttons keep a releases-page
