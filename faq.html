@@ -156,7 +156,7 @@
         <details class="faq-item">
           <summary>Why does my computer warn me about running it?</summary>
           <div class="faq-answer">
-            <p>Our Windows and macOS builds aren't code-signed yet, which means first-launch shows a "this app is from an unidentified developer" warning. We're <strong>actively working with Apple and Microsoft</strong> on developer signing — it's a paperwork and verification process, not a trust issue. Until then, on macOS you can right-click → Open, and on Windows you can click "More info" → "Run anyway". Checksums are on our <a href="https://github.com/MurchE/naggler-downloads/releases/latest" rel="noopener">GitHub releases page</a> if you want to verify the binary yourself.</p>
+            <p>Windows builds are signed with Azure Artifact Signing. Very new releases can still trip a SmartScreen reputation warning while install volume builds, but the unknown-publisher wall is no longer the expected path. macOS downloads are published only after Developer ID signing, notarization, and stapling pass; if you're testing a private pre-notarized build, macOS may still ask you to right-click → Open. Checksums are on our <a href="https://github.com/MurchE/naggler-downloads/releases/latest" rel="noopener">GitHub releases page</a> if you want to verify the binary yourself.</p>
           </div>
         </details>
 
