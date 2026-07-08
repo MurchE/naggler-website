@@ -66,10 +66,16 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     if (!res.ok) return; // keep fallback hrefs
     const assets = (await res.json()).assets || [];
     btns.forEach((btn) => {
-      const match = btn.getAttribute("data-asset-match");
-      const asset =
-        assets.find((a) => a.name === match) ||
-        assets.find((a) => a.name.endsWith(match));
+      // data-asset-match may be a comma-separated preference list, e.g.
+      // "-macos.dmg,-macos.zip" — pick the first asset that matches.
+      const matches = (btn.getAttribute("data-asset-match") || "")
+        .split(",").map((s) => s.trim()).filter(Boolean);
+      let asset = null;
+      for (const m of matches) {
+        asset = assets.find((a) => a.name === m) ||
+                assets.find((a) => a.name.endsWith(m));
+        if (asset) break;
+      }
       if (asset && asset.browser_download_url) {
         btn.href = asset.browser_download_url;
       }
