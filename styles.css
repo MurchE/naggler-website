@@ -876,6 +876,14 @@ section {
   box-shadow: 0 4px 0 var(--slate-200), 0 16px 32px -8px rgba(0, 0, 0, 0.35);
   color: var(--slate);
 }
+.download-btn-disabled,
+.download-btn-disabled:hover {
+  cursor: default;
+  background: color-mix(in srgb, white 82%, var(--slate-100));
+  color: var(--slate-500);
+  transform: none;
+  box-shadow: 0 2px 0 var(--slate-200), 0 10px 20px -10px rgba(0, 0, 0, 0.28);
+}
 .download-btn .platform {
   font-family: var(--font-mono);
   font-size: 0.7rem;
