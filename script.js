@@ -73,7 +73,8 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       let asset = null;
       for (const m of matches) {
         asset = assets.find((a) => a.name === m) ||
-                assets.find((a) => a.name.endsWith(m));
+                assets.find((a) => a.name.endsWith(m)) ||
+                assets.find((a) => a.name.startsWith(m));
         if (asset) break;
       }
       if (asset && asset.browser_download_url) {
