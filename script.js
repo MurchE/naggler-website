@@ -49,6 +49,36 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   } catch (_) { /* offline — keep the baked-in version */ }
 })();
 
+// 2b. Direct-download resolver. Asset filenames are version-stamped
+//     (Naggler-vX.Y.Z-macos.zip), so we can't hard-link a stable URL for Mac
+//     /Linux the way we can for Windows' fixed "Naggler.exe". The downloads
+//     repo is PUBLIC, so resolve each platform button to the latest release's
+//     real browser_download_url at load time. Buttons keep a releases-page
+//     href as the no-JS / API-down fallback, so a click always works.
+(async () => {
+  const btns = document.querySelectorAll(".download-btn[data-asset-match]");
+  if (!btns.length) return;
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/MurchE/naggler-downloads/releases/latest",
+      { cache: "no-store", headers: { Accept: "application/vnd.github+json" } }
+    );
+    if (!res.ok) return; // keep fallback hrefs
+    const assets = (await res.json()).assets || [];
+    btns.forEach((btn) => {
+      const match = btn.getAttribute("data-asset-match");
+      const asset =
+        assets.find((a) => a.name === match) ||
+        assets.find((a) => a.name.endsWith(match));
+      if (asset && asset.browser_download_url) {
+        btn.href = asset.browser_download_url;
+      }
+    });
+  } catch (_) {
+    /* offline / rate-limited — keep the releases-page fallback hrefs */
+  }
+})();
+
 // 3. Email-gated download flow — POST to relay worker, fall back to mailto.
 //    UX goals: instant feedback, graceful degradation, no dark-pattern
 //    gating (if the worker is down we offer the GitHub link in the error).
