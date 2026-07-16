@@ -54,7 +54,7 @@
         <h2>What happens when you talk to Naggy</h2>
         <p>Naggler can call an AI model on your behalf. You choose one of three modes in Settings:</p>
         <ol>
-          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed via our Cloudflare Worker to Anthropic's Claude API. We apply a per-install daily rate limit (100 requests/day), plus per-network and overall daily caps to protect the shared free tier. The relay does not log message content — it only stores daily counters keyed by your anonymous install ID (and, for the network/overall caps, your IP and the date).</li>
+          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed via our Cloudflare Worker to <strong>TokenRouter</strong>, a third-party AI gateway that serves Claude-family models. We do not control — and cannot independently verify — the gateway's own upstream routing or retention, so treat cloud messages as processed by TokenRouter and its upstream model providers under their policies. We apply a per-install daily rate limit (100 requests/day), plus per-network and overall daily caps to protect the shared free tier. The relay does not log message content — it only stores daily counters keyed by your anonymous install ID (and, for the network/overall caps, your IP and the date). If we later enable a direct Anthropic connection for the cloud tier, we will update this page.</li>
           <li><strong>Your own API key.</strong> We hand your request directly to the provider you choose — Anthropic, OpenAI, or OpenRouter — using the key you provided. We don't see it.</li>
           <li><strong>Fully local (Ollama).</strong> Nothing leaves your machine.</li>
         </ol>
