@@ -24,8 +24,7 @@
         <a href="/#team">Meet Naggy</a>
         <a href="/#talk">Talk to him</a>
         <a href="/#how">How it works</a>
-        <a href="https://github.com/MurchE/naggler-downloads/releases/latest" target="_blank" rel="noopener">Github</a>
-        <a href="/#download" class="btn btn-primary">Download</a>
+        <a href="/#download" class="btn btn-primary">Get Naggler</a>
       </div>
     </div>
   </nav>
@@ -38,7 +37,7 @@
         Naggler is a small desktop app that stores your task check-ins in a SQLite file on your own computer. It does not have user accounts, does not track you, and does not phone home. This page says the same thing in more words because browsers expect a link called "Privacy."
       </p>
 
-      <p class="legal-updated">Last updated: July 6, 2026</p>
+      <p class="legal-updated">Last updated: August 5, 2026</p>
 
       <section>
         <h2>What lives on your computer only</h2>
@@ -63,11 +62,11 @@
 
       <section>
         <h2>What happens when you enter an email on naggler.com</h2>
-        <p>The email signup form on the download page does three things:</p>
+        <p>During the alpha, the email form on the download page is how you get Naggler. Submitting it does three things:</p>
         <ul>
           <li>Stores the email address, the country code Cloudflare reports, your browser's user-agent string, and a timestamp in a Cloudflare KV namespace we run.</li>
-          <li>Triggers an internal notification so a human (currently: the founder) knows to send you the download link.</li>
-          <li>Gets used once, and occasionally used again if we have something useful to tell you — a new signed build, a big fix, or the real launch. You can reply "stop" to any message and we'll delete your entry.</li>
+          <li>Automatically sends you the download email through Resend, our email delivery provider, which processes your address for that send. Submitting the form again re-sends the same links (lightly rate-limited). It may also ping the founder internally that someone new joined.</li>
+          <li>Keeps you on the alpha list, which we use sparingly when we have something useful to tell you — a new signed build, a big fix, or the real launch. You can reply "stop" to any message and we'll delete your entry.</li>
         </ul>
         <p>We don't sell, rent, or share the list. There isn't a list product here.</p>
       </section>
@@ -111,8 +110,7 @@
       <div class="footer-links">
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
-        <a href="https://github.com/MurchE/naggler-downloads/releases/latest">GitHub</a>
-        <a href="https://github.com/MurchE/naggler-downloads/releases">Changelog</a>
+        <a href="/faq.html">FAQ</a>
         <span class="pill version-pill">v1.10.31</span>
       </div>
     </div>

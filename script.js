@@ -2,21 +2,6 @@
 // Adding .js marker so progressive-enhancement CSS rules activate.
 document.documentElement.classList.add("js");
 
-// Mobile detect — Naggler is desktop-only. On phones we hide the three
-// platform buttons and show an email-me-the-link form instead, so the
-// user can finish the install when they're back at their computer.
-// Defensive default = desktop view (covers no-JS users and detection misses).
-(function detectMobile() {
-  const ua = navigator.userAgent || "";
-  const isMobile =
-    /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(ua)
-    || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
-  if (!isMobile) return;
-  document.documentElement.classList.add("is-mobile");
-  document.querySelectorAll(".download-desktop-only").forEach(el => el.hidden = true);
-  document.querySelectorAll(".download-mobile-only").forEach(el => el.hidden = false);
-})();
-
 // 1. Scroll reveal — unfold elements as they come into view.
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -49,46 +34,10 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
   } catch (_) { /* offline — keep the baked-in version */ }
 })();
 
-// 2b. Direct-download resolver. Asset filenames are version-stamped
-//     (Naggler-vX.Y.Z-macos.dmg), so we can't hard-link a stable URL for Mac
-//     /Linux the way we can for Windows' fixed "Naggler.exe". The downloads
-//     repo is PUBLIC, so resolve each platform button to the latest release's
-//     real browser_download_url at load time. Buttons keep a releases-page
-//     href as the no-JS / API-down fallback, so a click always works.
-(async () => {
-  const btns = document.querySelectorAll(".download-btn[data-asset-match]");
-  if (!btns.length) return;
-  try {
-    const res = await fetch(
-      "https://api.github.com/repos/MurchE/naggler-downloads/releases/latest",
-      { cache: "no-store", headers: { Accept: "application/vnd.github+json" } }
-    );
-    if (!res.ok) return; // keep fallback hrefs
-    const assets = (await res.json()).assets || [];
-    btns.forEach((btn) => {
-      // data-asset-match may be a comma-separated preference list, e.g.
-      // "-macos.dmg,-macos.zip" — pick the first asset that matches.
-      const matches = (btn.getAttribute("data-asset-match") || "")
-        .split(",").map((s) => s.trim()).filter(Boolean);
-      let asset = null;
-      for (const m of matches) {
-        asset = assets.find((a) => a.name === m) ||
-                assets.find((a) => a.name.endsWith(m)) ||
-                assets.find((a) => a.name.startsWith(m));
-        if (asset) break;
-      }
-      if (asset && asset.browser_download_url) {
-        btn.href = asset.browser_download_url;
-      }
-    });
-  } catch (_) {
-    /* offline / rate-limited — keep the releases-page fallback hrefs */
-  }
-})();
-
 // 3. Email-gated download flow — POST to relay worker, fall back to mailto.
-//    UX goals: instant feedback, graceful degradation, no dark-pattern
-//    gating (if the worker is down we offer the GitHub link in the error).
+//    This form is the only way in during the alpha (no direct download
+//    buttons), so the failure path matters: if the worker is down we
+//    offer a mailto so a human can let you in by hand.
 (function setupSignup() {
   const SIGNUP_URL = "https://naggy-relay.naggler.workers.dev/signup";
   const MAILTO_FALLBACK = "mailto:feedback@naggler.com"
@@ -112,7 +61,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     input.setAttribute("aria-describedby", "signup-error");
     errorEl.hidden = false;
     if (withFallback) {
-      errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> or grab the <a href="https://github.com/MurchE/naggler-downloads/releases/latest" style="color:inherit;text-decoration:underline;">latest GitHub release</a>.`;
+      errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> and a human will send your links by hand.`;
     } else {
       errorEl.textContent = msg;
     }
