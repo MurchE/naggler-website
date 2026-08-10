@@ -34,48 +34,58 @@
       <span class="section-kicker">Privacy</span>
       <h1 class="legal-title">The short version.</h1>
       <p class="legal-lede">
-        Naggler is a small desktop app that stores your task check-ins in a SQLite file on your own computer. It does not have user accounts, does not track you, and does not phone home. This page says the same thing in more words because browsers expect a link called "Privacy."
+        Naggler is local-first: your task ledger lives in a SQLite file on your computer, and there is no Naggler account or background sync. Optional features do use the network — Naggy's AI, update checks, email delivery, integrations you configure, and analytics only if you explicitly enable it. This page spells out what goes where.
       </p>
 
-      <p class="legal-updated">Last updated: August 5, 2026</p>
+      <p class="legal-updated">Last updated: August 10, 2026</p>
 
       <section>
         <h2>What lives on your computer only</h2>
         <ul>
           <li>Your task list, priority rankings, and check-in history — all stored at <code>~/.naggler/naggler.db</code> (or <code>C:\Users\you\.naggler\naggler.db</code> on Windows).</li>
           <li>Your settings — cadence, quiet hours, snooze rules, theme.</li>
-          <li>Any chats you have with Naggy if you're using a local model (Ollama) or your own API key.</li>
+          <li>Your Naggy conversations, notes, memories, and per-task observations. These are stored locally regardless of which AI option you choose.</li>
         </ul>
-        <p>This data never leaves your machine unless you export it yourself or ask an AI provider to look at it (see below).</p>
+        <p>Core task tracking works offline. When you use a network AI option, Naggler sends a bounded copy of relevant local context for that request, as described next; it does not sync the database itself.</p>
       </section>
 
       <section>
         <h2>What happens when you talk to Naggy</h2>
-        <p>Naggler can call an AI model on your behalf. You choose one of three modes in Settings:</p>
+        <p>For each AI request, Naggler sends the message you typed, recent conversation turns, and a context snapshot. Depending on what exists in your ledger, that snapshot can include active and snoozed tasks, recent check-ins and focus activity, current session status, Naggy's notes and memories, and task notes and dependencies. Proposal-revision requests use a narrower task-and-proposal context. Naggler caps the context size, but it does not redact task titles or note text.</p>
+        <p>You choose one of three modes in Settings:</p>
         <ol>
-          <li><strong>Naggler Cloud</strong> (default for new installs). Your message is relayed via our Cloudflare Worker to <strong>TokenRouter</strong>, a third-party AI gateway serving Claude-family models, and is handled in line with TokenRouter's policies. We apply a per-install daily rate limit (100 requests/day), plus per-network and overall daily caps to protect the shared free tier. The relay does not log message content — it only stores daily counters keyed by your anonymous install ID (and, for the network/overall caps, your IP and the date). If we later enable a direct Anthropic connection for the cloud tier, we will update this page.</li>
+          <li><strong>Naggler Cloud</strong> (default for new installs). Your request passes through our Cloudflare Worker to the configured model provider. The current beta deployment uses <strong>TokenRouter</strong>, which serves an Anthropic Claude-family model; the relay also supports routing directly to <strong>Anthropic</strong> if its service configuration changes. The relay processes request content in transit but is designed not to persist chat content. To protect the shared tier, Cloudflare KV holds daily counters tied to an install identifier, a network address, and a global total for about 36 hours.</li>
           <li><strong>Your own API key.</strong> We hand your request directly to the provider you choose — Anthropic, OpenAI, or OpenRouter — using the key you provided. We don't see it.</li>
           <li><strong>Fully local (Ollama).</strong> Nothing leaves your machine.</li>
         </ol>
-        <p>For Naggler Cloud, Anthropic's handling of API data is governed by their <a href="https://www.anthropic.com/legal/privacy" rel="noopener">privacy policy</a>. As of writing, API inputs aren't used to train their models. For BYOK, your chosen provider's data handling terms apply.</p>
+        <p>Naggler Cloud requests are also subject to <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's</a>, <a href="https://www.tokenrouter.com/privacy" rel="noopener">TokenRouter's</a>, and, where applicable, <a href="https://www.anthropic.com/legal/privacy" rel="noopener">Anthropic's</a> data terms. For BYOK, your chosen provider's terms apply.</p>
       </section>
 
       <section>
         <h2>What happens when you enter an email on naggler.com</h2>
-        <p>During the alpha, the email form on the download page is how you get Naggler. Submitting it does three things:</p>
+        <p>During the beta, the email form on the download page is how you get Naggler. Submitting it does three things:</p>
         <ul>
-          <li>Stores the email address, the country code Cloudflare reports, your browser's user-agent string, and a timestamp in a Cloudflare KV namespace we run.</li>
-          <li>Automatically sends you the download email through Resend, our email delivery provider, which processes your address for that send. Submitting the form again re-sends the same links (lightly rate-limited). It may also ping the founder internally that someone new joined.</li>
-          <li>Keeps you on the alpha list, which we use sparingly when we have something useful to tell you — a new signed build, a big fix, or the real launch. You can reply "stop" to any message and we'll delete your entry.</li>
+          <li>Stores your email address, form source, Cloudflare country code, signup/send timestamps, and resend count in Cloudflare KV. We do not retain your raw network address or browser user-agent in the signup record. A purpose-scoped hash is kept for about two hours to rate-limit the form.</li>
+          <li>Sends the download email through <a href="https://resend.com/legal/privacy-policy" rel="noopener">Resend</a>, which processes your address for delivery. The page shows success only after Resend accepts the message. Re-submitting can resend the links after a short cooldown. A first signup may also trigger an internal notification that contains country and source, not your address.</li>
+          <li>Keeps you on the beta list for download access and important build, security, and launch updates. It is not a marketing newsletter. We retain the record until you ask us to remove it; reply "stop" or email us and we will delete it.</li>
         </ul>
-        <p>We don't sell, rent, or share the list. There isn't a list product here.</p>
+        <p>We do not sell or rent the list. We share the address only with processors needed to operate the form and deliver those messages.</p>
+      </section>
+
+      <section>
+        <h2>Other optional network activity</h2>
+        <ul>
+          <li>Returning installs make a short request to GitHub Releases to check whether a newer public build exists. No task or conversation content is included.</li>
+          <li>Analytics is off by default. If you explicitly enable it in Advanced settings and provide PostHog configuration, Naggler sends product event names, limited event properties, app version, and a random install identifier to the PostHog host you selected.</li>
+          <li>Third-party integrations and MCP tools contact only the services you configure. Their data handling is governed by those services.</li>
+        </ul>
       </section>
 
       <section>
         <h2>What we don't have</h2>
         <ul>
           <li>No user accounts. No password to steal.</li>
-          <li>No telemetry, analytics, or crash reporting in the app.</li>
+          <li>No crash-reporting service and no analytics enabled by default.</li>
           <li>No cookies on naggler.com beyond what's strictly needed to serve the page. (GitHub Pages may log standard HTTP request data on their side — that's outside our control.)</li>
           <li>No advertising, ever.</li>
         </ul>
@@ -83,13 +93,13 @@
 
       <section>
         <h2>Your data, your move</h2>
-        <p>Because the database lives on your computer, your right to access and delete it is enforced by the file system. Delete the <code>~/.naggler</code> folder and the app has nothing left to say about you.</p>
+        <p>You can export the local ledger from Settings. To remove all local Naggler data, quit the app, remove <code>~/.naggler</code> (or <code>C:\Users\you\.naggler</code>), remove Naggler entries from your operating-system keyring if you saved API or integration secrets, and disable Launch at startup before uninstalling (or remove its startup entry manually). Conversation deletion in the app removes the thread from view; until the beta's full-delete control lands, removing the local database is the way to erase its stored transcript.</p>
         <p>If you signed up on naggler.com and want your email removed from the KV store, write to <a href="mailto:feedback@naggler.com">feedback@naggler.com</a> — we'll confirm the delete within a couple of days.</p>
       </section>
 
       <section>
         <h2>When this changes</h2>
-        <p>If we add a new thing (a real account system, third-party analytics, a paid tier with payment records), we'll update this page and tell people who signed up for the download email. We won't quietly slide something in.</p>
+        <p>If we add a new thing (an account system, built-in analytics destination, or a paid tier with payment records), we'll update this page and tell people who signed up for the download email. We won't quietly slide something in.</p>
       </section>
 
       <p class="legal-close">
@@ -111,7 +121,7 @@
         <a href="/privacy.html">Privacy</a>
         <a href="/terms.html">Terms</a>
         <a href="/faq.html">FAQ</a>
-        <span class="pill version-pill">v1.10.32</span>
+        <span class="pill version-pill">v1.10.31</span>
       </div>
     </div>
   </footer>
