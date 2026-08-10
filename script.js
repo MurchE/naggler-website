@@ -21,7 +21,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 // 2. Pull current version from same-origin version.json and patch the
 //    download note + footer pill. The source repo is private so we can't
 //    hit the GitHub API; the website repo carries the canonical version
-//    string and gets updated on every release.
+//    string and is updated only after a release is actually published.
 (async () => {
   try {
     const res = await fetch("/version.json", { cache: "no-store" });
@@ -31,11 +31,11 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     document.querySelectorAll(".version-pill").forEach(el => el.textContent = `v${version}`);
     const pill = document.querySelector(".footer-links .pill");
     if (pill) pill.textContent = `v${version}`;
-  } catch (_) { /* offline — keep the baked-in version */ }
+  } catch (_) { /* offline — keep the non-numeric "current beta" fallback */ }
 })();
 
 // 3. Email-gated download flow — POST to relay worker, fall back to mailto.
-//    This form is the only way in during the alpha (no direct download
+//    This form is the only way in during the beta (no direct download
 //    buttons), so the failure path matters: if the worker is down we
 //    offer a mailto so a human can let you in by hand.
 (function setupSignup() {
@@ -121,8 +121,8 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       }
 
       const deliveryConfirmed = payload.ok === true && (
-        payload.delivery === "sent" ||
-        payload.delivery === "recently_sent"
+        payload.delivery === "accepted" ||
+        payload.delivery === "recently_accepted"
       );
       if (!deliveryConfirmed) {
         showError(
