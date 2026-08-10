@@ -98,17 +98,37 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
         body: JSON.stringify({
           email,
           source: "naggler.com",
-          ua: navigator.userAgent.slice(0, 120),
-          ts: new Date().toISOString(),
         }),
       });
+
+      let payload = {};
+      try {
+        payload = await res.json();
+      } catch (err) {
+        payload = {};
+      }
 
       if (res.status === 429) {
         showError("Too many signups from your network — try again in a minute.", true);
         return;
       }
       if (!res.ok) {
-        showError("Couldn't reach our mail server right now.", true);
+        showError(
+          payload.error || "Couldn't reach our mail server right now.",
+          true,
+        );
+        return;
+      }
+
+      const deliveryConfirmed = payload.ok === true && (
+        payload.delivery === "sent" ||
+        payload.delivery === "recently_sent"
+      );
+      if (!deliveryConfirmed) {
+        showError(
+          payload.error || "We couldn't confirm the email was sent. Please try again.",
+          true,
+        );
         return;
       }
 
