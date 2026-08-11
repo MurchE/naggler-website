@@ -37,11 +37,11 @@
         Naggler is desktop beta software we're glad you're using. Use it for your own work, except don't use it to break the law or hurt other people. It comes with no warranty — if it eats your task list, we'll feel bad but we won't pay for it.
       </p>
 
-      <p class="legal-updated">Last updated: July 8, 2026</p>
+      <p class="legal-updated">Last updated: August 10, 2026</p>
 
       <section>
         <h2>What this covers</h2>
-        <p>These terms apply when you download the Naggler desktop app, use naggler.com, or talk to the Naggler Cloud AI relay. If you're using your own API key or a local Ollama model, your chosen provider's terms also apply to that piece.</p>
+        <p>These terms apply when you download the Naggler desktop app, use naggler.com, or talk to the Naggler Cloud AI relay. If you're using your own API key, your chosen provider's terms also apply to that piece. If you're using a configured Ollama server, any applicable server terms apply; Ollama stays on-device only when that server runs on this device.</p>
       </section>
 
       <section>
@@ -58,8 +58,8 @@
       <section>
         <h2>Naggler Cloud (the AI relay)</h2>
         <ul>
-          <li>We pay for the compute so new users can try Naggy without setting up an API key. There's a per-install daily rate limit (currently 100 interactions/day) so one heavy user can't empty our pot for everyone else.</li>
-          <li>If you hit the limit, the app tells you and offers to switch you to your own key or a local model. You're never blocked from using Naggler — only from using our free credits.</li>
+          <li>We pay for the compute so new users can try Naggy without setting up an API key. Naggler Cloud includes a 100-chat daily beta allowance per install. Cloudflare KV counters provide soft, best-effort fairness, not an exact atomic cap; concurrent requests can overshoot. The finite TokenRouter key quota is the hard spend boundary for shared cloud spend.</li>
+          <li>If Naggler Cloud declines a request or becomes unavailable, the app offers your own provider key or a configured Ollama server as alternatives. Core Naggler tracking remains available without our free cloud credits.</li>
           <li>We reserve the right to cap, pause, or remove Naggler Cloud if the economics stop working or someone is clearly abusing it. If we do, we'll tell you in the app, not quietly.</li>
         </ul>
       </section>

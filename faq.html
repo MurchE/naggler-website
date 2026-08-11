@@ -83,9 +83,9 @@
           </div>
           <div class="brain-role">Your key, your billing</div>
           <h3 class="brain-name">Bring Your Own Key</h3>
-          <p class="brain-lede">Drop in your own API key and Naggy uses that instead. Unlimited use, billed directly to you. Handy if you already have an Anthropic, OpenAI, or OpenRouter account, or want full control over the spend.</p>
+          <p class="brain-lede">Drop in your own API key and Naggy uses that instead. Usage is subject to your provider's billing, rate, and usage limits. Handy if you already have an Anthropic, OpenAI, or OpenRouter account, or want control over the spend.</p>
           <ul class="brain-facts">
-            <li><strong>Setup:</strong> Paste a key in Settings → Brain.</li>
+            <li><strong>Setup:</strong> Paste a key in Settings → AI Setup.</li>
             <li><strong>Cost to you:</strong> Whatever the provider charges — typically pennies per day of active use.</li>
             <li><strong>Where thinking happens:</strong> The provider's servers. We never see it.</li>
             <li><strong>Compatible with:</strong> Anthropic / OpenAI / OpenRouter keys today.</li>
@@ -95,22 +95,22 @@
         <!-- OPTION 3: OLLAMA -->
         <article class="brain-card">
           <div class="brain-portrait">
-            <img src="assets/naggy-wizard.png" alt="Naggy the tech wizard, running fully local" />
+            <img src="assets/naggy-wizard.png" alt="Naggy the tech wizard, configured with Ollama" />
           </div>
-          <div class="brain-role">Private by default</div>
-          <h3 class="brain-name">Local and Private with Ollama</h3>
-          <p class="brain-lede">Run a model on your own computer. Your conversations never leave your machine — not to us, not to anyone. Perfect if you work on sensitive material or prefer running your own model.</p>
+          <div class="brain-role">You choose the server</div>
+          <h3 class="brain-name">Run Naggy with Ollama</h3>
+          <p class="brain-lede">Naggler sends each AI request to the Ollama server URL you configure. It stays on this device only when that server runs on this device — ideal when you want to run your own model locally.</p>
           <ul class="brain-facts">
-            <li><strong>Setup:</strong> Click "Install Ollama" in Settings to open Ollama's official download page, finish its installer, then choose a local model in Naggler.</li>
+            <li><strong>Setup:</strong> Click "Download Ollama" in Settings to open Ollama's official download page, finish its installer, then choose a local model in Naggler.</li>
             <li><strong>Cost to you:</strong> Zero. You're using your own CPU/GPU.</li>
-            <li><strong>Where thinking happens:</strong> On your machine. Air-gapped capable.</li>
+            <li><strong>Where thinking happens:</strong> At your configured Ollama server; it can run fully offline when that server and model are on this device.</li>
             <li><strong>Trade-off:</strong> Slightly slower and a bit less sharp than Cloud on older laptops.</li>
           </ul>
         </article>
 
       </div>
 
-      <p class="brain-footnote">You can switch between any of these at any time in Settings → Brain. Your task ledger stays local and untouched either way.</p>
+      <p class="brain-footnote">You can switch between any of these at any time in Settings → AI Setup. Your task ledger stays local and untouched either way.</p>
     </div>
   </section>
 
@@ -141,7 +141,7 @@
         <details class="faq-item">
           <summary>What data leaves my machine?</summary>
           <div class="faq-answer">
-            <p>Your task ledger lives on your disk. When you talk to Naggy using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends your message, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With <strong>Ollama</strong> or AI turned off, that AI context stays local.</p>
+            <p>Your task ledger lives on your disk. When you talk to Naggy using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends your message, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With AI turned off, that context stays local. With <strong>Ollama</strong>, it goes to the Ollama server URL you configure and stays on this device only when that server runs on this device.</p>
           </div>
         </details>
 
@@ -176,7 +176,7 @@
         <details class="faq-item">
           <summary>Does it work offline?</summary>
           <div class="faq-answer">
-            <p>Yes, if you pick <strong>Ollama</strong>. The core tracking loop — set priorities, answer pings, review your day — works without a network either way. You only need a connection when you're talking to Naggy on Cloud or BYOK.</p>
+            <p>Yes, if your configured <strong>Ollama</strong> server and model run on this device. The core tracking loop — set priorities, answer pings, review your day — works without a network either way. You need a connection when you're talking to Naggy on Cloud, BYOK, or a remote Ollama server.</p>
           </div>
         </details>
 
