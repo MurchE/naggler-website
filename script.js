@@ -133,6 +133,25 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       }
 
       // Success: hide form, reveal success card, scroll it into view.
+      // "recently_accepted" means the relay deliberately did NOT send: the
+      // last send to this address was inside the 10-minute resend cooldown.
+      // Saying "Naggy's sending your links" there is untrue, and it points
+      // someone whose first email is still in flight at their spam folder
+      // hunting for a second mail that will never arrive. Tell them what
+      // actually happened and when retrying will work.
+      if (payload.delivery === "recently_accepted") {
+        const heading = success.querySelector("h3");
+        const body = success.querySelector("p");
+        if (heading) heading.textContent = "Already sent — check your inbox.";
+        if (body) {
+          body.textContent =
+            "Naggy emailed your download links a few minutes ago, so he "
+            + "didn't send a duplicate. Look in your inbox, then in "
+            + "promotions or spam. If it still hasn't landed 10 minutes "
+            + "after your first try, submit again and he'll resend — or "
+            + "tell us at feedback@naggler.com.";
+        }
+      }
       form.hidden = true;
       success.hidden = false;
       success.scrollIntoView({ behavior: "smooth", block: "center" });
