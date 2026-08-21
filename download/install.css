@@ -4,9 +4,10 @@
   --line: #e2e8f0;
   --paper: #faf8f5;
   --blue: #3b82f6;
+  --blue-deep: #1d4ed8;
   --blue-soft: #dbeafe;
-  --sage: #7a9415;
-  --sage-soft: #f1f4e4;
+  --coral: #f4845f;
+  --coral-soft: #fde8e0;
   --card: #ffffff;
 }
 
@@ -57,8 +58,8 @@ body {
   margin: 0 0 14px;
   padding: 9px 15px;
   border-radius: 999px;
-  color: #52650b;
-  background: var(--sage-soft);
+  color: var(--blue-deep);
+  background: var(--blue-soft);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -72,7 +73,7 @@ body {
   place-items: center;
   border-radius: 50%;
   color: white;
-  background: var(--sage);
+  background: var(--coral);
   content: "✓";
   font-size: 13px;
 }
@@ -97,7 +98,7 @@ h1 {
 
 .lede a,
 .help a {
-  color: #52650b;
+  color: var(--blue-deep);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -132,7 +133,7 @@ h1 {
   place-items: center;
   border-radius: 50%;
   color: white;
-  background: var(--sage);
+  background: var(--blue);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 22px;
   transform: translateX(-50%);
