@@ -133,7 +133,7 @@ h1 {
   place-items: center;
   border-radius: 50%;
   color: white;
-  background: var(--blue);
+  background: var(--coral);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 22px;
   transform: translateX(-50%);
