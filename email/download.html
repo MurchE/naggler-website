@@ -111,9 +111,9 @@
                 <p style="margin:0 0 6px;font-size:13px;color:#1d4ed8;font-weight:500;">A quick note on privacy</p>
                 <p style="margin:0;font-size:12px;color:#1e293b;line-height:1.55;">
                   Your task database lives on your machine — no accounts, no sync.
-                  When you chat with Naggy, the message + a task snapshot gets sent
+                  When you use an AI feature, the current request content (a typed message, or an app-generated heartbeat/title prompt) + a task snapshot gets sent
                   to the AI provider you've chosen. By default that's Naggler Cloud via
-                  TokenRouter. Its 100-chat daily beta allowance per install uses soft,
+                  TokenRouter. Its 100 successful Cloud model calls per install per day (soft counter) including chat, optional Deeper Thinking retries, background focus nudges, and thread titles uses soft,
                   best-effort fairness counters; a finite TokenRouter key quota is the
                   hard spend boundary. Settings → AI Setup also offers your own Anthropic /
                   OpenAI / OpenRouter key (subject to that provider's limits), Ollama

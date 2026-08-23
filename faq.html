@@ -15,9 +15,9 @@
 
   <link rel="icon" href="assets/favicon.ico" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,0..100,0..1;1,9..144,400..700,0..100,0..1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  
+  
+  <link href="fonts/fonts.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -141,7 +141,7 @@
         <details class="faq-item">
           <summary>What data leaves my machine?</summary>
           <div class="faq-answer">
-            <p>Your task ledger lives on your disk. When you talk to Naggy using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends your message, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With AI turned off, that context stays local. With <strong>Ollama</strong>, it goes to the Ollama server URL you configure and stays on this device only when that server runs on this device.</p>
+            <p>Your task ledger lives on your disk. When you use an AI feature using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends the current request content (a typed message, or an app-generated heartbeat/title prompt) plus recent conversation, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With AI turned off, that context stays local. With <strong>Ollama</strong>, it goes to the Ollama server URL you configure and stays on this device only when that server runs on this device.</p>
           </div>
         </details>
 
@@ -191,7 +191,7 @@
         <details class="faq-item">
           <summary>Will you ever sell or train on my data?</summary>
           <div class="faq-answer">
-            <p>No. We don't sell user data. We don't train models on your conversations. Full stop. See <a href="/privacy.html">our privacy policy</a> for the detailed version.</p>
+            <p>No. We don't sell user data. We don't train models on your conversations. See <a href="/privacy.html">our privacy policy</a> for the detailed version and for information on how third-party processors handle your data.</p>
           </div>
         </details>
 
