@@ -58,7 +58,7 @@
       <section>
         <h2>Naggler Cloud (the AI relay)</h2>
         <ul>
-          <li>We pay for the compute so new users can try Naggy without setting up an API key. Naggler Cloud includes 100 successful Cloud model calls per install per day (soft counter) including chat, optional Deeper Thinking retries, background focus nudges, and thread titles. Cloudflare KV counters provide soft, best-effort fairness, not an exact atomic cap; concurrent requests can overshoot. The finite TokenRouter key quota is the hard spend boundary for shared cloud spend.</li>
+          <li>We pay for the compute so new users can try Naggy without setting up an API key. Every supported app version uses the OpenRouter Zero Data Retention route. Naggler Cloud includes 100 successful Cloud model calls per install per day (soft counter) including chat, optional Deeper Thinking retries, background focus nudges, and thread titles. Cloudflare KV counters provide soft, best-effort fairness, not an exact atomic cap; concurrent requests can overshoot.</li>
           <li>If Naggler Cloud declines a request or becomes unavailable, the app offers your own provider key or a configured Ollama server as alternatives. Core Naggler tracking remains available without our free cloud credits.</li>
           <li>We reserve the right to cap, pause, or remove Naggler Cloud if the economics stop working or someone is clearly abusing it. If we do, we'll tell you in the app, not quietly.</li>
         </ul>

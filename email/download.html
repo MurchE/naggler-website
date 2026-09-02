@@ -113,9 +113,11 @@
                   Your task database lives on your machine — no accounts, no sync.
                   When you use an AI feature, the current request content (a typed message, or an app-generated heartbeat/title prompt) + a task snapshot gets sent
                   to the AI provider you've chosen. By default that's Naggler Cloud via
-                  TokenRouter. Its 100 successful Cloud model calls per install per day (soft counter) including chat, optional Deeper Thinking retries, background focus nudges, and thread titles uses soft,
-                  best-effort fairness counters; a finite TokenRouter key quota is the
-                  hard spend boundary. Settings → AI Setup also offers your own Anthropic /
+                  Cloudflare and OpenRouter. Every Cloud request requires a Zero Data
+                  Retention endpoint and denies provider data collection. Its 100 successful
+                  Cloud model calls per install per day (soft counter) including chat,
+                  optional Deeper Thinking retries, background focus nudges, and thread
+                  titles uses soft, best-effort fairness counters. Settings → AI Setup also offers your own Anthropic /
                   OpenAI / OpenRouter key (subject to that provider's limits), Ollama
                   (on-device only when its server runs on this device), or no AI at all.
                 </p>
