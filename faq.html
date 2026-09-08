@@ -48,12 +48,12 @@
     </div>
   </header>
 
-  <!-- ══════════ NAGGY'S BRAIN — THREE OPTIONS ══════════ -->
+  <!-- ══════════ NAGGY'S BRAIN — FOUR OPTIONS ══════════ -->
   <section id="brain" class="brain">
     <div class="container">
       <div class="tight">
         <span class="section-kicker">Naggy's brain</span>
-        <h2 class="section-title">You have three options<br>to power Naggy.</h2>
+        <h2 class="section-title">You have four options<br>to power Naggy.</h2>
         <p class="section-lede">Every option runs the same Naggy. They differ in <em>where the thinking happens</em>, <em>who pays for it</em>, and <em>how private the conversation stays</em>. Most people pick Cloud and never look back. Pick whichever fits.</p>
       </div>
 
@@ -110,6 +110,7 @@
 
       </div>
 
+      <p class="brain-footnote"><strong>The fourth option: a local coding agent.</strong> If the Claude Code CLI is already installed on your computer, Settings &rarr; AI Setup offers one more route &mdash; Naggy's replies come from that <code>claude</code> command, under whatever account it is signed in to. A local program is not local thinking: the request still goes to Anthropic, billed to that account rather than to us. It is not shown on computers without the CLI.</p>
       <p class="brain-footnote">You can switch between any of these at any time in Settings → AI Setup. Your task ledger stays local and untouched either way.</p>
     </div>
   </section>
@@ -134,14 +135,14 @@
         <details class="faq-item">
           <summary>What does Naggler cost?</summary>
           <div class="faq-answer">
-            <p>Naggler itself is free during beta. If you use <strong>Naggler Cloud</strong>, we cover the compute — you pay nothing. If you <strong>Bring Your Own Key</strong>, you pay your model provider directly (usually pennies per day). If you run <strong>Ollama locally</strong>, it's free — you're using your own hardware.</p>
+            <p>Naggler itself is free during beta. If you use <strong>Naggler Cloud</strong>, we cover the compute — you pay nothing. If you <strong>Bring Your Own Key</strong>, you pay your model provider directly (usually pennies per day). If you run <strong>Ollama locally</strong>, it's free — you're using your own hardware. If you point Naggy at the <strong>Claude Code CLI</strong> on your computer, you pay us nothing and the usage lands on whatever Claude account that CLI is signed in to.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary>What data leaves my machine?</summary>
           <div class="faq-answer">
-            <p>Your task ledger lives on your disk. When you use an AI feature using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends the current request content (a typed message, or an app-generated heartbeat/title prompt) plus recent conversation, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With AI turned off, that context stays local. With <strong>Ollama</strong>, it goes to the Ollama server URL you configure and stays on this device only when that server runs on this device.</p>
+            <p>Your task ledger lives on your disk. When you use an AI feature using <strong>Cloud</strong> or <strong>BYOK</strong>, Naggler sends the current request content (a typed message, or an app-generated heartbeat/title prompt) plus recent conversation, recent conversation, and the task/activity context needed to answer; see the exact context described on our <a href="/privacy.html">Privacy page</a>. With AI turned off, that context stays local. With the <strong>local coding agent</strong>, Naggler hands that copy to the <code>claude</code> CLI on your computer, which sends it to Anthropic under the account that CLI is signed in to. With <strong>Ollama</strong>, it goes to the Ollama server URL you configure and stays on this device only when that server runs on this device.</p>
           </div>
         </details>
 
@@ -184,7 +185,7 @@
         <details class="faq-item">
           <summary>Does it work offline?</summary>
           <div class="faq-answer">
-            <p>Yes, if your configured <strong>Ollama</strong> server and model run on this device. The core tracking loop — set priorities, answer pings, review your day — works without a network either way. You need a connection when you're talking to Naggy on Cloud, BYOK, or a remote Ollama server.</p>
+            <p>Yes, if your configured <strong>Ollama</strong> server and model run on this device. The core tracking loop — set priorities, answer pings, review your day — works without a network either way. You need a connection when you're talking to Naggy on Cloud, BYOK, the local coding agent, or a remote Ollama server.</p>
           </div>
         </details>
 

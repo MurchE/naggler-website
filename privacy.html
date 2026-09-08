@@ -37,7 +37,7 @@
         Naggler is local-first: your task ledger lives in a SQLite file on your computer, and there is no Naggler account or background sync. Optional features do use the network — Naggy's AI, update checks, email delivery, and integrations you configure. Product analytics is not enabled in this beta. This page spells out what goes where.
       </p>
 
-      <p class="legal-updated">Last updated: September 3, 2026</p>
+      <p class="legal-updated">Last updated: September 6, 2026</p>
 
       <section>
         <h2>What lives on your computer only</h2>
@@ -53,13 +53,14 @@
         <h2>What happens when you use an AI feature</h2>
         <p>Each AI request can send the current request content (a typed message, or an app-generated heartbeat/title prompt) plus recent conversation, and a bounded context copy. Some AI requests are not typed chats: periodic post-check-in heartbeats (default on; use Settings &rarr; Proactive Nudges to disable) and optional thread-title summaries. When revising an action, it can also send the proposal you opened for revision.</p>
         <p>Depending on the request and your context settings, that copy can include current date and local time; active and snoozed tasks; focus score, tracked totals, and recent check-ins or focus activity; current session status and task durations; Naggy's notes and memories; and relevant task notes and dependencies. Naggler caps the context size, but it does not redact task titles or note text.</p>
-        <p>You choose one of three modes in Settings:</p>
+        <p>You choose one of four modes in Settings:</p>
         <ol>
           <li><strong>Naggler Cloud</strong> (default for new installs). Naggler does not train on your conversations and the Cloud relay does not keep a server-side chat history. Every supported app version now sends Cloud requests through Cloudflare and OpenRouter to a selected hosted model endpoint. Each request requires an OpenRouter Zero Data Retention endpoint, denies provider data collection, and excludes endpoints that ignore requested parameters. A single request may be attempted against more than one hosted model endpoint from a reviewed set; every attempt carries those same requirements, and we do not route Cloud requests to any provider outside them. Naggler Cloud includes 100 successful Cloud model calls per install per day (soft counter) including chat, optional Deeper Thinking retries, background focus nudges, and thread titles. To share this allowance, Cloudflare KV holds soft, best-effort daily fairness counters tied to an anonymous install identifier and a purpose-scoped daily network-address hash for about 36 hours. These eventually consistent counters are not atomic billing limits and concurrent requests can overshoot them.</li>
           <li><strong>Your own API key.</strong> We hand your request directly to the provider you choose — Anthropic, OpenAI, or OpenRouter — using the key you provided. We don't see it.</li>
+          <li><strong>A local coding agent.</strong> If the Claude Code CLI is installed on this computer, Naggler can hand the request to that <code>claude</code> command instead of calling a provider itself. Running a local program is not local thinking: the CLI sends the request on to Anthropic under whatever account it is signed in to, and the usage lands on that account's subscription or API billing. Naggler holds no key and bills nothing for this mode. The turn runs with Claude Code's tools, MCP servers, and hooks disabled and session transcripts turned off, so it answers and does nothing else. This mode appears in Settings only on computers that already have the CLI.</li>
           <li><strong>Ollama.</strong> Naggler sends each AI request to the Ollama server URL you configure. It stays on this device only when that server runs on this device.</li>
         </ol>
-        <p>Current Naggler Cloud requests are subject to <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's</a>, <a href="https://openrouter.ai/privacy" rel="noopener">OpenRouter's</a>, and the selected model endpoint's data terms. For BYOK, your chosen provider's terms apply.</p>
+        <p>Current Naggler Cloud requests are subject to <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare's</a>, <a href="https://openrouter.ai/privacy" rel="noopener">OpenRouter's</a>, and the selected model endpoint's data terms. For BYOK, your chosen provider's terms apply; for the local coding agent, so do Anthropic's terms for the account that CLI is signed in to.</p>
       </section>
 
       <section>
