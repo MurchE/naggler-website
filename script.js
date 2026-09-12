@@ -133,25 +133,26 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       }
 
       // Success: hide form, reveal success card, scroll it into view.
-      // "recently_accepted" means the relay deliberately did NOT send: the
-      // last send to this address was inside the 10-minute resend cooldown.
-      // Saying "Naggy's sending your links" there is untrue, and it points
-      // someone whose first email is still in flight at their spam folder
-      // hunting for a second mail that will never arrive. Tell them what
-      // actually happened and when retrying will work.
-      if (payload.delivery === "recently_accepted") {
-        const heading = success.querySelector("h3");
-        const body = success.querySelector("p");
-        if (heading) heading.textContent = "Already sent — check your inbox.";
-        if (body) {
-          body.textContent =
-            "Naggy emailed your download links a few minutes ago, so he "
-            + "didn't send a duplicate. Look in your inbox, then in "
-            + "promotions or spam. If it still hasn't landed 10 minutes "
-            + "after your first try, submit again and he'll resend — or "
-            + "tell us at feedback@naggler.com.";
-        }
-      }
+      //
+      // There used to be a branch here that rewrote the card when the relay
+      // answered "recently_accepted", because that value meant the relay had
+      // deliberately NOT sent — the last mail to this address was inside the
+      // resend cooldown — and "Naggy's sending your links" was untrue there.
+      //
+      // The relay no longer distinguishes. As of 2026-09-12 every accepted
+      // submission returns the byte-identical body whether the address is new,
+      // known and outside cooldown, known and inside it, or over its daily
+      // send budget. That was the fix for a presence oracle: the old responses
+      // let anyone POST an address and learn from the reply whether that person
+      // was on the roster, and whether they had been emailed in the last ten
+      // minutes. A branch here is what a distinguishable response is FOR, so
+      // the branch had to go with it.
+      //
+      // Which moves the honesty problem into the static card. Its copy now has
+      // to be true in all four of those cases at once, and must not hint at
+      // which one happened — see index.html. "recently_accepted" stays in the
+      // accepted set above so the page keeps working against an older Worker
+      // if one is ever rolled back; it just no longer changes what we say.
       form.hidden = true;
       success.hidden = false;
       success.scrollIntoView({ behavior: "smooth", block: "center" });
