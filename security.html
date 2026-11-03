@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://naggy-relay.naggler.workers.dev; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Security — Naggler</title>
+  <meta name="description" content="How to report a security vulnerability in Naggler, what to expect from us, and the safe harbor we offer good-faith researchers." />
+  <meta name="theme-color" content="#faf8f5" />
+  <link rel="canonical" href="https://naggler.com/security.html" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <link href="fonts/fonts.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand">
+        <span class="brand-mark">N</span>
+        <span>Naggler</span>
+      </a>
+      <div class="nav-links">
+        <a href="/#team">Meet Naggy</a>
+        <a href="/#talk">Talk to him</a>
+        <a href="/#how">How it works</a>
+        <a href="/#download" class="btn btn-primary">Get Naggler</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="legal">
+    <div class="container">
+      <span class="section-kicker">Security</span>
+      <h1 class="legal-title">Report a vulnerability.</h1>
+      <p class="legal-lede">
+        Found a way Naggler could expose someone's data or be made to do something it shouldn't? Please tell us.
+      </p>
+
+      <p class="legal-updated">Last updated: November 3, 2026</p>
+
+      <section id="report">
+        <h2>How to report</h2>
+        <p>Email <a href="mailto:feedback@naggler.com?subject=Security">feedback@naggler.com</a> with "Security" in the subject. Include the Naggler version and platform (macOS or Windows), what you found and how to reproduce it.</p>
+        <p><strong>What you can expect from us.</strong> We will acknowledge your report within 3 business days, keep you informed while we investigate, and credit you if you would like. We do not promise a fix date.</p>
+      </section>
+
+      <section id="ground-rules">
+        <h2>What we ask of you</h2>
+        <ul>
+          <li>Give us a reasonable amount of time to fix the issue before you disclose it publicly.</li>
+          <li>Test only with your own copy of the app and your own accounts.</li>
+          <li>If you encounter anyone else's personal data, stop, do not keep it, and tell us. Leave it out of your report.</li>
+          <li>Do not disrupt our services (no denial-of-service or load testing), and do not use social engineering or phishing.</li>
+          <li>Do not engage in extortion.</li>
+        </ul>
+      </section>
+
+      <section id="safe-harbor">
+        <h2>Safe harbor</h2>
+        <p>We will consider your security research to be authorized if you make a good faith effort to comply with this policy during your security research. If your activities violate certain restrictions in our <a href="/terms.html">Terms</a>, we will waive those restrictions for the limited purpose of allowing security research. We will not sue you for attempting to circumvent the technological safeguards we have put in place to protect the applications in scope. If a third party takes legal action against you for activities carried out in accordance with this policy, we will make this authorization known.</p>
+        <p>For inadvertent, good-faith violations of this policy, we will not take civil action or file a report with law enforcement. Before doing anything that may be inconsistent with or unaddressed by this policy, please contact us by submitting a report.</p>
+        <p>This safe harbor covers only legal claims under our control. It does not bind independent third parties, including the AI providers and the integration services (such as Todoist, Linear, Google Tasks, Microsoft To Do and Apple Reminders) that you connect Naggler to.</p>
+        <p>The safe-harbor wording is the disclose.io <a href="https://github.com/disclose/dioterms/blob/master/terms/simple-safe-harbor/en-US.md" rel="noopener">Simple Safe Harbor</a> (CC0-1.0). The only change is that the waiver names our Terms rather than an "Acceptable Use Policy". The acknowledgement window follows CISA's vulnerability disclosure policy template.</p>
+      </section>
+
+      <section id="scope">
+        <h2>Scope</h2>
+        <p><strong>In scope:</strong> the Naggler desktop apps for macOS and Windows (including the bundled naggler-mcp server and the in-app updater), the naggler.com website, and the Naggler Cloud relay Worker.</p>
+        <p><strong>Out of scope:</strong> the third-party AI providers and integration services themselves, and the hosting platforms the site and relay run on. The <a href="/privacy.html">privacy page</a> lists what each provider receives.</p>
+      </section>
+
+      <p class="legal-close">
+        Machine-readable contact: <a href="/.well-known/security.txt">security.txt</a>.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-signature">Made with <em>naggy pokes</em> by a small cast of hedgehogs.</div>
+        <div class="footer-meta">
+          © <span id="footer-year">2026</span> Naggler ·
+          <a href="mailto:feedback@naggler.com">feedback@naggler.com</a> ·
+          <a href="https://trianglecubed.co" rel="noopener">A TriangleCubed production</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/security.html">Security</a>
+        <a href="/faq.html">FAQ</a>
+        <span class="pill version-pill">v1.11.19</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

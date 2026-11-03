@@ -1683,3 +1683,12 @@ section {
     scroll-behavior: auto !important;
   }
 }
+
+/* Links that take the surrounding text colour. A class, not a style=""
+   attribute, so the pages' Content-Security-Policy can forbid inline styles. */
+a.inherit-link,
+a.inherit-link:hover,
+.signup-error a {
+  color: inherit;
+  text-decoration: underline;
+}

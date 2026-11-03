@@ -60,10 +60,14 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
     input.setAttribute("aria-invalid", "true");
     input.setAttribute("aria-describedby", "signup-error");
     errorEl.hidden = false;
+    // `msg` can be the relay's `error` string. Build nodes rather than
+    // innerHTML so a response body can never become markup on naggler.com.
+    errorEl.textContent = msg;
     if (withFallback) {
-      errorEl.innerHTML = `${msg} <a href="${MAILTO_FALLBACK}" style="color:inherit;text-decoration:underline;">Email us directly</a> and a human will send your links by hand.`;
-    } else {
-      errorEl.textContent = msg;
+      const link = document.createElement("a");
+      link.href = MAILTO_FALLBACK;
+      link.textContent = "Email us directly";
+      errorEl.append(" ", link, " and a human will send your links by hand.");
     }
   }
 

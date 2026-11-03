@@ -1,0 +1,5 @@
+Contact: mailto:feedback@naggler.com?subject=Security
+Expires: 2027-05-03T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://naggler.com/.well-known/security.txt
+Policy: https://naggler.com/security.html#report

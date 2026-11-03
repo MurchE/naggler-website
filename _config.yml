@@ -1,0 +1,5 @@
+# GitHub Pages builds this mirror with Jekyll, which drops dot-directories.
+# security.txt must be served from /.well-known (RFC 9116), so include it.
+# Nothing here uses Jekyll features; every other file is copied as-is.
+include:
+  - .well-known
