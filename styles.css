@@ -1198,8 +1198,10 @@ section {
   color: var(--slate-500);
   opacity: 0.8;
 }
-.footer-meta a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.footer-purpose { margin: 0; color: var(--slate); }
+.footer-meta a, .footer-purpose a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .footer-meta a:hover { color: var(--slate); }
+.footer-purpose a:hover { color: var(--blue-deep); }
 
 /* Subtle staggered entrance — CSS-only, fires on load, no JS/observer
    dependency so it works under prerender, screenshot, and no-JS. */
