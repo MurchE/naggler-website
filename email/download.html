@@ -27,7 +27,7 @@
       <td align="center">
 
         <!-- Main card -->
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="max-width:560px;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="width:100%;max-width:560px;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;">
 
           <!-- Header with Naggy -->
           <tr>
@@ -110,16 +110,17 @@
               <div style="background:#f5faff;border:1px solid #dbeafe;border-radius:10px;padding:14px 18px;">
                 <p style="margin:0 0 6px;font-size:13px;color:#1d4ed8;font-weight:500;">A quick note on privacy</p>
                 <p style="margin:0;font-size:12px;color:#1e293b;line-height:1.55;">
-                  Your task database lives on your machine — no accounts, no sync.
-                  When you use an AI feature, the current request content (a typed message, or an app-generated heartbeat/title prompt) + a task snapshot gets sent
-                  to the AI provider you've chosen. By default that's Naggler Cloud via
-                  Cloudflare and OpenRouter. Every Cloud request requires a Zero Data
-                  Retention endpoint and denies provider data collection. Its 100 successful
-                  Cloud model calls per install per day (soft counter) including chat,
-                  optional Deeper Thinking retries, background focus nudges, and thread
-                  titles uses soft, best-effort fairness counters. Settings → AI Setup also offers your own Anthropic /
-                  OpenAI / OpenRouter key (subject to that provider's limits), Ollama
-                  (on-device only when its server runs on this device), or no AI at all.
+                  Your task database lives on your machine — no account required for the core ledger.
+                  AI is off until you pick a setup in onboarding or Settings → AI Setup.
+                  Choose Naggler Cloud (included in the beta), your local coding agent (Claude Code),
+                  your own Anthropic / OpenAI / OpenRouter key (subject to that provider's limits),
+                  or Ollama (on-device only when its server runs on this device) — or leave AI off.
+                  AI features send request content plus relevant task and conversation context to the chosen provider.
+                  Your local coding agent sends requests under the account its CLI is signed in to.
+                  Naggler Cloud routes through Cloudflare and OpenRouter. Every Cloud request requires a Zero Data Retention endpoint
+                  and denies provider data collection. The allowance is 100 successful Cloud model calls per install per day,
+                  including chat, optional Deeper Thinking retries, background focus nudges, and thread titles.
+                  These are soft, best-effort fairness counters, not an exact atomic cap.
                 </p>
               </div>
             </td>
@@ -140,7 +141,7 @@
         </table>
 
         <!-- Footer -->
-        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="max-width:560px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="560" style="width:100%;max-width:560px;">
           <tr>
             <td style="padding:20px 16px 8px;text-align:center;font-size:11px;color:#94a3b8;line-height:1.6;">
               You got this email because you asked for a download link at <a href="https://naggler.com" style="color:#94a3b8;text-decoration:underline;">naggler.com</a>. Reply any time — I read everything at <a href="mailto:feedback@naggler.com" style="color:#94a3b8;text-decoration:underline;">feedback@naggler.com</a>.
